@@ -7,23 +7,46 @@
 
     <title>APEX Property Services</title>
 
-    <!-- ✅ Chatbase Embed Script (if using Chatbase) -->
+    <!-- ✅ Chatbase Initialization Script -->
+    <script>
+      (function(){
+        if(!window.chatbase||window.chatbase("getState")!=="initialized"){
+          window.chatbase=(...arguments)=>{
+            if(!window.chatbase.q){window.chatbase.q=[]}
+            window.chatbase.q.push(arguments)
+          };
+          window.chatbase=new Proxy(window.chatbase,{
+            get(target,prop){
+              if(prop==="q"){return target.q}
+              return(...args)=>target(prop,...args)
+            }
+          })
+        }
+        const onLoad=function(){
+          const script=document.createElement("script");
+          script.src="https://www.chatbase.co/embed.min.js";
+          script.id="7DoOfPFNoOJK5zYptWTKj";
+          script.domain="www.chatbase.co";
+          document.body.appendChild(script)
+        };
+        if(document.readyState==="complete"){
+          onLoad()
+        }else{
+          window.addEventListener("load",onLoad)
+        }
+      })();
+    </script>
+
+    <!-- ✅ Chatbase Config -->
     <script>
       window.chatbaseConfig = {
-        chatbotId: "YOUR_CHATBASE_ID" // replace this with your actual ID
+        chatbotId: "7DoOfPFNoOJK5zYptWTKj"
       };
     </script>
-    <script
-      src="https://www.chatbase.co/embed.min.js"
-      id="chatbase-script"
-      defer
-    ></script>
   </head>
 
   <body>
     <div id="root"></div>
-
-    <!-- ✅ Main React Script -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
