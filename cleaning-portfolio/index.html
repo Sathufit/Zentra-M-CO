@@ -4,10 +4,26 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+
+    <title>APEX Property Services</title>
+
+    <!-- ✅ Chatbase Embed Script (if using Chatbase) -->
+    <script>
+      window.chatbaseConfig = {
+        chatbotId: "YOUR_CHATBASE_ID" // replace this with your actual ID
+      };
+    </script>
+    <script
+      src="https://www.chatbase.co/embed.min.js"
+      id="chatbase-script"
+      defer
+    ></script>
   </head>
+
   <body>
     <div id="root"></div>
+
+    <!-- ✅ Main React Script -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

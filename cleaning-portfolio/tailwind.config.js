@@ -22,6 +22,7 @@ export default {
             transform: 'translateY(0)'
           },
         },
+      },
       colors: {
         gold: {
           light: '#FCF6BA',
@@ -32,9 +33,8 @@ export default {
       backgroundColor: {
         'rich-black': '#1A1A1A',
         'off-black': '#222222',
-      }
-    }
+      },
+    },
   },
   plugins: [],
-}
 }
