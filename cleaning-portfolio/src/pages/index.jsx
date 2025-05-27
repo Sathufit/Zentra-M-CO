@@ -151,6 +151,7 @@ function App() {
     }
   };
 
+
   return (
     <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden">
       {/* Navigation Bar */}
@@ -817,79 +818,116 @@ function App() {
             </div>
           </div>
         </section>
-      </main>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16 border-t border-yellow-400/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="md:col-span-2">
-              <div className="flex items-center mb-6">
-                <span className="text-3xl font-black bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent mr-4">
-                   Zentra M & CO
+        {/* WhatsApp Contact Section */}
+        <section className="py-20 bg-black text-white relative overflow-hidden border-t border-yellow-400/20">
+          <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/30 to-black"></div>
+          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="flex flex-col items-center space-y-8">
+              <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 w-20 h-20 rounded-2xl flex items-center justify-center shadow-lg shadow-yellow-400/25">
+                <img 
+                  src="https://img.icons8.com/color/96/000000/whatsapp--v1.png"
+                  alt="WhatsApp"
+                  className="w-14 h-14 hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+              <h2 className="text-4xl md:text-5xl font-black">
+                <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
+                  Let's Chat on WhatsApp
                 </span>
-                <div className="h-8 w-px bg-yellow-400/50"></div>
-                <span className="ml-4 text-gray-300">Property Solutions</span>
-              </div>
-              <p className="text-gray-300 mb-6 max-w-md">
-                Transforming properties with premium craftsmanship and exceptional service. 
-                Your vision, our expertise, extraordinary results.
+              </h2>
+              <p className="text-xl text-gray-300 max-w-2xl">
+                Get instant responses to your questions. We're here to help you transform your space.
               </p>
-              <div className="flex space-x-4">
-                {['facebook', 'twitter', 'instagram', 'linkedin'].map((social) => (
-                  <button
-                    key={social}
-                    className="bg-gray-800 hover:bg-yellow-400 hover:text-black p-3 rounded-full transition-all duration-300 group"
-                  >
-                    <MessageSquare size={20} />
-                  </button>
-                ))}
-              </div>
+              <a
+                href="https://wa.me/94769346516?text=Hello!%20I'm%20interested%20in%20your%20services."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-10 py-4 rounded-full text-lg font-bold hover:shadow-2xl hover:shadow-yellow-400/25 hover:scale-105 transition-all duration-300 inline-flex items-center space-x-3 relative overflow-hidden"
+              >
+                <span className="relative z-10 flex items-center">
+                  Start Chat Now
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              </a>
             </div>
-            
-            <div>
-              <h3 className="text-lg font-bold mb-4 text-yellow-400">Services</h3>
-              <ul className="space-y-2">
-                {services.slice(0, 4).map((service) => (
-                  <li key={service}>
-                    <button className="text-gray-300 hover:text-yellow-400 transition-colors duration-300">
-                      {service}
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="bg-gray-900 text-white py-16 border-t border-yellow-400/20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+              <div className="md:col-span-2">
+                <div className="flex items-center mb-6">
+                  <span className="text-3xl font-black bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent mr-4">
+                   Zentra M & CO
+                  </span>
+                  <div className="h-8 w-px bg-yellow-400/50"></div>
+                  <span className="ml-4 text-gray-300">Property Solutions</span>
+                </div>
+                <p className="text-gray-300 mb-6 max-w-md">
+                  Transforming properties with premium craftsmanship and exceptional service. 
+                  Your vision, our expertise, extraordinary results.
+                </p>
+                <div className="flex space-x-4">
+                  {['facebook', 'twitter', 'instagram', 'linkedin'].map((social) => (
+                    <button
+                      key={social}
+                      className="bg-gray-800 hover:bg-yellow-400 hover:text-black p-3 rounded-full transition-all duration-300 group"
+                    >
+                      <MessageSquare size={20} />
                     </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="text-lg font-bold mb-4 text-yellow-400">Contact Info</h3>
-              <div className="space-y-3">
-                <div className="flex items-center text-gray-300">
-                  <Phone size={16} className="mr-3 text-yellow-400" />
-                  <span>+1 (555) 123-4567</span>
+                  ))}
                 </div>
-                <div className="flex items-center text-gray-300">
-                  <Mail size={16} className="mr-3 text-yellow-400" />
-                  <span>Info@zentram.com.au</span>
-                </div>
-                <div className="flex items-center text-gray-300">
-                  <Building size={16} className="mr-3 text-yellow-400" />
-                  <span>123 Business Ave, City, State 12345</span>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-bold mb-4 text-yellow-400">Services</h3>
+                <ul className="space-y-2">
+                  {services.slice(0, 4).map((service) => (
+                    <li key={service}>
+                      <button className="text-gray-300 hover:text-yellow-400 transition-colors duration-300">
+                        {service}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <div>
+                <h3 className="text-lg font-bold mb-4 text-yellow-400">Contact Info</h3>
+                <div className="space-y-3">
+                  <div className="flex items-center text-gray-300">
+                    <Phone size={16} className="mr-3 text-yellow-400" />
+                    <span>+1 (555) 123-4567</span>
+                  </div>
+                  <div className="flex items-center text-gray-300">
+                    <Mail size={16} className="mr-3 text-yellow-400" />
+                    <span>Info@zentram.com.au</span>
+                  </div>
+                  <div className="flex items-center text-gray-300">
+                    <Building size={16} className="mr-3 text-yellow-400" />
+                    <span>123 Business Ave, City, State 12345</span>
+                  </div>
                 </div>
               </div>
             </div>
+            
+            <div className="border-t border-gray-800 mt-12 pt-8 text-center">
+              <p className="text-gray-400">
+                © 2024 Apex Property Solutions. All rights reserved. | 
+                <button className="hover:text-yellow-400 transition-colors duration-300 ml-1">Privacy Policy</button> | 
+                <button className="hover:text-yellow-400 transition-colors duration-300 ml-1">Terms of Service</button>
+              </p>
+            </div>
           </div>
-          
-          <div className="border-t border-gray-800 mt-12 pt-8 text-center">
-            <p className="text-gray-400">
-              © 2024 Apex Property Solutions. All rights reserved. | 
-              <button className="hover:text-yellow-400 transition-colors duration-300 ml-1">Privacy Policy</button> | 
-              <button className="hover:text-yellow-400 transition-colors duration-300 ml-1">Terms of Service</button>
-            </p>
-          </div>
-        </div>
-      </footer>
+        </footer>
+        </main>
     </div>
   );
 }
+
 
 export default App;

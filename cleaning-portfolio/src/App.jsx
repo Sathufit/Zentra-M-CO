@@ -1,18 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
+        <a href="https://vite.dev" target="_blank" rel="noreferrer">
           <img src={viteLogo} className="logo" alt="Vite logo" />
         </a>
-        <a href="https://react.dev" target="_blank">
+        <a href="https://react.dev" target="_blank" rel="noreferrer">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
@@ -28,8 +28,35 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+
+      {/* ✅ Floating WhatsApp Chat Button */}
+      <a
+        href="https://wa.me/94769346516?text=Hello!%20I'm%20interested%20in%20your%20services."
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          zIndex: 1000,
+        }}
+      >
+        <img
+          src="https://img.icons8.com/color/48/000000/whatsapp--v1.png"
+          alt="Chat on WhatsApp"
+          style={{
+            width: '56px',
+            height: '56px',
+            borderRadius: '50%',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+            transition: 'transform 0.3s ease',
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.1)')}
+          onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+        />
+      </a>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
