@@ -110,7 +110,7 @@ function App() {
     }
   };
 
-  const FORMSPREE_ENDPOINT = "https://formspree.io/f/mqaqvwev"; // Replace with your Formspree endpoint
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/mqaqvwev";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -136,7 +136,6 @@ function App() {
         });
         setTimeout(() => setShowSuccessMessage(false), 5000);
       } else {
-        // Optionally handle errors here
         alert("There was an error submitting the form.");
       }
     } catch (error) {
@@ -153,42 +152,42 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden">
       {/* Navigation Bar */}
-      <nav className={`fixed w-full z-50 transition-all duration-500 ${scrollY > 50 ? 'bg-white/95 backdrop-blur-lg shadow-xl' : 'bg-transparent'}`}>
+      <nav className={`fixed w-full z-50 transition-all duration-500 ${scrollY > 50 ? 'bg-black/95 backdrop-blur-lg shadow-2xl border-b border-yellow-400/20' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20">
             <div className="flex items-center">
-              <div className="flex-shrink-0 relative">
-                <span className="text-3xl font-black bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                  APEX
+              <div className="flex-shrink-0 relative group">
+                <span className="text-3xl font-black bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent">
+                  Zentra M & CO
                 </span>
-                <div className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
-                </div>
+                <div className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+              </div>
             </div>
             <div className="hidden md:flex md:items-center md:space-x-8">
               {['Home', 'About', 'Services', 'Projects', 'Contact'].map((item) => (
                 <button
                   key={item}
                   onClick={() => scrollToSection(item.toLowerCase() === 'home' ? 'hero' : item.toLowerCase())}
-                  className="relative text-slate-700 hover:text-indigo-600 px-3 py-2 text-sm font-semibold transition-all duration-300 group"
+                  className="relative text-gray-300 hover:text-yellow-400 px-3 py-2 text-sm font-semibold transition-all duration-300 group"
                 >
                   {item}
-                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-indigo-600 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-yellow-400 to-yellow-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
                 </button>
               ))}
               <button
                 onClick={() => scrollToSection('inquiry')}
-                className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-full text-sm font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300 relative overflow-hidden group"
+                className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-6 py-3 rounded-full text-sm font-bold hover:shadow-2xl hover:shadow-yellow-400/25 hover:scale-105 transition-all duration-300 relative overflow-hidden group"
               >
                 <span className="relative z-10">Get Quote</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
             </div>
             <div className="-mr-2 flex md:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-slate-700 hover:text-indigo-600 focus:outline-none"
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-yellow-400 focus:outline-none"
               >
                 <div className="w-6 h-6 relative">
                   <span className={`absolute h-0.5 w-6 bg-current transform transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 top-3' : 'top-1'}`}></span>
@@ -201,20 +200,20 @@ function App() {
         </div>
 
         {/* Mobile menu */}
-        <div className={`md:hidden transition-all duration-300 ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden bg-white/95 backdrop-blur-lg`}>
+        <div className={`md:hidden transition-all duration-300 ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden bg-black/95 backdrop-blur-lg border-t border-yellow-400/20`}>
           <div className="px-4 pt-2 pb-4 space-y-2">
             {['Home', 'About', 'Services', 'Projects', 'Contact'].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase() === 'home' ? 'hero' : item.toLowerCase())}
-                className="block w-full text-left px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-600 transition-colors duration-300"
+                className="block w-full text-left px-3 py-2 text-base font-medium text-gray-300 hover:text-yellow-400 transition-colors duration-300"
               >
                 {item}
               </button>
             ))}
             <button
               onClick={() => scrollToSection('inquiry')}
-              className="block w-full text-left bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-3 py-2 rounded-lg text-base font-medium mt-4"
+              className="block w-full text-left bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-3 py-2 rounded-lg text-base font-bold mt-4"
             >
               Get Quote
             </button>
@@ -226,11 +225,11 @@ function App() {
         {/* Hero Section */}
         <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
           {/* Animated Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-indigo-900 to-purple-900">
+          <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
             <div 
-              className="absolute inset-0 opacity-30"
+              className="absolute inset-0 opacity-20"
               style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23fbbf24' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
                 backgroundRepeat: 'repeat'
               }}
             />
@@ -238,10 +237,10 @@ function App() {
           
           {/* Floating Elements */}
           <div className="absolute inset-0 overflow-hidden">
-            {Array.from({ length: 20 }).map((_, i) => (
+            {Array.from({ length: 15 }).map((_, i) => (
               <div
                 key={i}
-                className="absolute bg-gradient-to-r from-indigo-400/20 to-purple-400/20 rounded-full animate-pulse"
+                className="absolute bg-gradient-to-r from-yellow-400/10 to-yellow-500/20 rounded-full animate-pulse"
                 style={{
                   left: `${Math.random() * 100}%`,
                   top: `${Math.random() * 100}%`,
@@ -257,35 +256,35 @@ function App() {
           <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
             <div className="animate-fade-in-up">
               <h1 className="text-6xl md:text-8xl font-black mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-white via-indigo-100 to-purple-100 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
                   Transform
                 </span>
                 <br />
-                <span className="bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent drop-shadow-2xl">
                   Your Space
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
                 Premium property maintenance services that elevate your lifestyle. 
                 From stunning renovations to meticulous maintenance - we create spaces that inspire.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                 <button
                   onClick={() => scrollToSection('inquiry')}
-                  className="group bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-10 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300 relative overflow-hidden"
+                  className="group bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-10 py-4 rounded-full text-lg font-bold hover:shadow-2xl hover:shadow-yellow-400/25 hover:scale-105 transition-all duration-300 relative overflow-hidden"
                 >
                   <span className="relative z-10 flex items-center">
                     Start Your Project
                     <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </button>
                 <button
                   onClick={() => scrollToSection('projects')}
-                  className="group flex items-center text-white hover:text-indigo-300 transition-colors duration-300"
+                  className="group flex items-center text-white hover:text-yellow-400 transition-colors duration-300"
                 >
-                  <div className="bg-white/10 backdrop-blur-sm p-3 rounded-full mr-3 group-hover:bg-white/20 transition-colors duration-300">
-                    <Play size={20} />
+                  <div className="bg-yellow-400/10 backdrop-blur-sm p-3 rounded-full mr-3 group-hover:bg-yellow-400/20 border border-yellow-400/30 transition-colors duration-300">
+                    <Play size={20} className="text-yellow-400" />
                   </div>
                   <span className="text-lg font-medium">View Our Work</span>
                 </button>
@@ -295,13 +294,13 @@ function App() {
 
           {/* Scroll Indicator */}
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <ChevronDown className="text-white/60" size={32} />
+            <ChevronDown className="text-yellow-400" size={32} />
           </div>
         </section>
 
         {/* Stats Section */}
-        <section className="py-20 bg-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-indigo-50 to-purple-50"></div>
+        <section className="py-20 bg-gray-900 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-gray-900 to-black"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {[
@@ -311,11 +310,11 @@ function App() {
                 { number: '24/7', label: 'Support Available', icon: Shield }
               ].map((stat, index) => (
                 <div key={index} className="text-center group">
-                  <div className="bg-gradient-to-br from-indigo-500 to-purple-600 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <stat.icon className="text-white" size={24} />
+                  <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-yellow-400/25">
+                    <stat.icon className="text-black" size={24} />
                   </div>
-                  <div className="text-3xl md:text-4xl font-black text-slate-800 mb-2">{stat.number}</div>
-                  <div className="text-slate-600 font-medium">{stat.label}</div>
+                  <div className="text-3xl md:text-4xl font-black text-yellow-400 mb-2">{stat.number}</div>
+                  <div className="text-gray-300 font-medium">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -323,16 +322,16 @@ function App() {
         </section>
 
         {/* Process Section */}
-        <section className="py-20 bg-slate-900 text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-indigo-900/50 to-purple-900/50"></div>
+        <section className="py-20 bg-black text-white relative overflow-hidden border-t border-yellow-400/20">
+          <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/50 to-black"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-5xl md:text-6xl font-black mb-6">
-                <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
                   Our Process
                 </span>
               </h2>
-              <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
                 A seamless journey from consultation to completion, designed around your vision and timeline.
               </p>
             </div>
@@ -345,15 +344,15 @@ function App() {
                 { icon: Sparkles, title: 'Completion', desc: 'Final walkthrough and handover of your transformed space' }
               ].map((step, index) => (
                 <div key={index} className="relative group">
-                  <div className="bg-gradient-to-br from-slate-800 to-slate-700 p-8 rounded-3xl border border-slate-600 hover:border-indigo-500 transition-all duration-300 group-hover:scale-105">
-                    <div className="bg-gradient-to-br from-indigo-500 to-purple-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300">
-                      <step.icon className="text-white" size={24} />
+                  <div className="bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 group-hover:scale-105 shadow-xl">
+                    <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300 shadow-lg shadow-yellow-400/25">
+                      <step.icon className="text-black" size={24} />
                     </div>
-                    <div className="absolute top-4 right-4 text-6xl font-black text-slate-700 group-hover:text-indigo-500/30 transition-colors duration-300">
+                    <div className="absolute top-4 right-4 text-6xl font-black text-gray-800 group-hover:text-yellow-400/30 transition-colors duration-300">
                       {String(index + 1).padStart(2, '0')}
                     </div>
                     <h3 className="text-2xl font-bold mb-4 text-white">{step.title}</h3>
-                    <p className="text-slate-300">{step.desc}</p>
+                    <p className="text-gray-300">{step.desc}</p>
                   </div>
                 </div>
               ))}
@@ -362,16 +361,16 @@ function App() {
         </section>
 
         {/* Services Section */}
-        <section id="services" className="py-20 bg-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-indigo-50"></div>
+        <section id="services" className="py-20 bg-gray-900 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-5xl md:text-6xl font-black mb-6">
-                <span className="bg-gradient-to-r from-slate-800 to-indigo-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-white to-yellow-400 bg-clip-text text-transparent">
                   Premium Services
                 </span>
               </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
                 Comprehensive property solutions delivered with exceptional craftsmanship and attention to detail.
               </p>
             </div>
@@ -382,15 +381,15 @@ function App() {
                 const Icon = icons[index] || Briefcase;
                 return (
                   <div key={index} className="group relative">
-                    <div className="bg-white p-8 rounded-3xl shadow-lg border border-slate-200 hover:border-indigo-300 transition-all duration-300 group-hover:scale-105 group-hover:shadow-2xl relative overflow-hidden">
-                      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 to-purple-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-                      <div className="bg-gradient-to-br from-indigo-500 to-purple-600 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300">
-                        <Icon className="text-white" size={24} />
+                    <div className="bg-black p-8 rounded-3xl shadow-2xl border border-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300 group-hover:scale-105 group-hover:shadow-yellow-400/10 relative overflow-hidden">
+                      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+                      <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300 shadow-lg shadow-yellow-400/25">
+                        <Icon className="text-black" size={24} />
                       </div>
-                      <h3 className="text-2xl font-bold mb-4 text-slate-800 group-hover:text-indigo-600 transition-colors duration-300">
+                      <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-yellow-400 transition-colors duration-300">
                         {service}
                       </h3>
-                      <p className="text-slate-600 leading-relaxed">
+                      <p className="text-gray-300 leading-relaxed">
                         {service.includes('Cleaning') && 'Comprehensive cleaning solutions that leave your space spotless and refreshed with eco-friendly products.'}
                         {service.includes('Pressure') && 'Professional pressure washing to restore surfaces and remove years of built-up grime and stains.'}
                         {service.includes('Painting') && 'Expert painting services using premium materials for stunning, long-lasting interior and exterior finishes.'}
@@ -400,7 +399,7 @@ function App() {
                         {service.includes('Web') && 'Professional web design and digital solutions to establish your strong online presence and grow your business.'}
                       </p>
                       <div className="mt-6">
-                        <button className="text-indigo-600 font-semibold flex items-center group-hover:text-purple-600 transition-colors duration-300">
+                        <button className="text-yellow-400 font-semibold flex items-center group-hover:text-yellow-300 transition-colors duration-300">
                           Learn More
                           <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={16} />
                         </button>
@@ -414,34 +413,34 @@ function App() {
         </section>
 
         {/* Testimonials Section */}
-        <section className="py-20 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-black/20"></div>
+        <section className="py-20 bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 text-black relative overflow-hidden">
+          <div className="absolute inset-0 bg-black/10"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-black mb-6 text-white">
+              <h2 className="text-5xl md:text-6xl font-black mb-6 text-black">
                 Client Stories
               </h2>
-              <p className="text-xl text-indigo-100 max-w-3xl mx-auto">
+              <p className="text-xl text-black/80 max-w-3xl mx-auto">
                 Don't just take our word for it - hear from our satisfied clients who've experienced our premium service.
               </p>
             </div>
             
             <div className="relative max-w-4xl mx-auto">
-              <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 md:p-12 border border-white/20">
+              <div className="bg-black/90 backdrop-blur-lg rounded-3xl p-8 md:p-12 border border-yellow-400/50 shadow-2xl">
                 <div className="text-center">
                   <div className="flex justify-center mb-6">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="text-yellow-400 fill-current" size={24} />
                     ))}
                   </div>
-                  <Quote className="text-white/60 mx-auto mb-6" size={48} />
-                  <p className="text-2xl md:text-3xl font-light mb-8 leading-relaxed">
+                  <Quote className="text-yellow-400/60 mx-auto mb-6" size={48} />
+                  <p className="text-2xl md:text-3xl font-light mb-8 leading-relaxed text-white">
                     "{testimonials[activeTestimonial].text}"
                   </p>
                   <div className="flex items-center justify-center">
                     <div>
-                      <h4 className="text-xl font-bold">{testimonials[activeTestimonial].name}</h4>
-                      <p className="text-indigo-200">{testimonials[activeTestimonial].role}</p>
+                      <h4 className="text-xl font-bold text-yellow-400">{testimonials[activeTestimonial].name}</h4>
+                      <p className="text-gray-300">{testimonials[activeTestimonial].role}</p>
                     </div>
                   </div>
                 </div>
@@ -454,7 +453,7 @@ function App() {
                     key={index}
                     onClick={() => setActiveTestimonial(index)}
                     className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === activeTestimonial ? 'bg-white scale-125' : 'bg-white/40 hover:bg-white/60'
+                      index === activeTestimonial ? 'bg-black scale-125' : 'bg-black/40 hover:bg-black/60'
                     }`}
                   />
                 ))}
@@ -464,17 +463,17 @@ function App() {
         </section>
 
         {/* About Section */}
-        <section id="about" className="py-20 bg-slate-900 text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-indigo-900/30 to-purple-900/30"></div>
+        <section id="about" className="py-20 bg-black text-white relative overflow-hidden border-t border-yellow-400/20">
+          <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/30 to-black"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
-                <h2 className="text-5xl md:text-6xl font-black mb-8">
-                  <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
-                    About Apex
+                <h2 className="text-3xl md:text-5xl font-black mb-8">
+                  <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
+                    About Zentra M & CO
                   </span>
                 </h2>
-                <p className="text-xl text-slate-300 mb-8 leading-relaxed">
+                <p className="text-xl text-gray-300 mb-8 leading-relaxed">
                   We're not just contractors - we're space transformation specialists. With over 15 years of experience, 
                   we've mastered the art of turning ordinary properties into extraordinary spaces that reflect your vision and exceed your expectations.
                 </p>
@@ -487,11 +486,11 @@ function App() {
                     <div key={index} className="space-y-2">
                       <div className="flex justify-between items-center">
                         <span className="font-semibold text-white">{stat.label}</span>
-                        <span className="text-indigo-400 font-bold">{stat.value}</span>
+                        <span className="text-yellow-400 font-bold">{stat.value}</span>
                       </div>
-                      <div className="w-full bg-slate-700 rounded-full h-3 overflow-hidden">
+                      <div className="w-full bg-gray-800 rounded-full h-3 overflow-hidden">
                         <div 
-                          className="h-full bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full transition-all duration-1000 ease-out"
+                          className="h-full bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full transition-all duration-1000 ease-out shadow-lg shadow-yellow-400/25"
                           style={{ width: stat.value }}
                         ></div>
                       </div>
@@ -507,10 +506,10 @@ function App() {
                   { icon: Users, title: 'Expert Team', desc: 'Skilled professionals with years of experience' },
                   { icon: Award, title: 'Quality Guaranteed', desc: 'Premium results backed by our guarantee' }
                 ].map((feature, index) => (
-                  <div key={index} className="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-indigo-500 transition-all duration-300 group hover:scale-105">
-                    <feature.icon className="text-indigo-400 mb-4 group-hover:text-purple-400 transition-colors duration-300" size={32} />
+                  <div key={index} className="bg-gray-900 p-6 rounded-2xl border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 group hover:scale-105 shadow-xl">
+                    <feature.icon className="text-yellow-400 mb-4 group-hover:text-yellow-300 transition-colors duration-300" size={32} />
                     <h3 className="font-bold text-white mb-2">{feature.title}</h3>
-                    <p className="text-slate-300 text-sm">{feature.desc}</p>
+                    <p className="text-gray-300 text-sm">{feature.desc}</p>
                   </div>
                 ))}
               </div>
@@ -519,88 +518,88 @@ function App() {
         </section>
 
         {/* Projects Section */}
-        <section id="projects" className="py-20 bg-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-50 to-indigo-50"></div>
+        <section id="projects" className="py-20 bg-gray-900 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-5xl md:text-6xl font-black mb-6">
-                <span className="bg-gradient-to-r from-slate-800 to-indigo-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-white to-yellow-400 bg-clip-text text-transparent">
                   Featured Projects
                 </span>
               </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-                Every project tells a story of transformation. Here are some of our recent success stories.
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                Explore our portfolio of stunning transformations and see how we bring visions to life.
               </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[...Array(6)].map((_, i) => (
-                <div key={i} className="group relative overflow-hidden rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300">
-                  <div className="aspect-w-4 aspect-h-64 bg-gradient-to-br from-indigo-500 to-purple-600 relative">
-                    <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-300"></div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center text-white">
-                        <Building className="mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" size={48} />
-                        <h3 className="text-2xl font-bold mb-2">Project {i + 1}</h3>
-                        <p className="text-indigo-100">Premium Transformation</p>
-                      </div>
+              {[
+                { title: 'Modern Kitchen Renovation', category: 'Interior Design', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&h=400&fit=crop' },
+                { title: 'Luxury Bathroom Suite', category: 'Premium Renovation', image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=500&h=400&fit=crop' },
+                { title: 'Garden Landscape Design', category: 'Outdoor Transformation', image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&h=400&fit=crop' },
+                { title: 'Commercial Office Space', category: 'Business Renovation', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&h=400&fit=crop' },
+                { title: 'Exterior House Painting', category: 'Property Enhancement', image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=500&h=400&fit=crop' },
+                { title: 'Luxury Flooring Installation', category: 'Premium Materials', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&h=400&fit=crop' }
+              ].map((project, index) => (
+                <div key={index} className="group relative overflow-hidden rounded-3xl bg-black shadow-2xl hover:shadow-yellow-400/10 transition-all duration-500">
+                  <div className="aspect-w-16 aspect-h-12 overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <div className="bg-yellow-400 text-black px-3 py-1 rounded-full text-xs font-bold inline-block mb-3">
+                      {project.category}
                     </div>
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                      <h4 className="text-white font-bold mb-2">
-                        {['Modern Kitchen Renovation', 'Luxury Bathroom Remodel', 'Complete Home Makeover', 'Commercial Office Design', 'Landscape Transformation', 'Exterior Restoration'][i] || 'Premium Project'}
-                      </h4>
-                      <p className="text-slate-200 text-sm">
-                        {['Complete kitchen transformation with premium finishes', 'Spa-like bathroom with luxury fixtures', 'Whole home renovation with modern design', 'Professional office space optimization', 'Beautiful outdoor living space creation', 'Full exterior restoration and enhancement'][i] || 'Professional transformation'}
-                      </p>
-                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+                    <button className="text-yellow-400 font-semibold flex items-center group-hover:text-yellow-300 transition-colors duration-300">
+                      View Project
+                      <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={16} />
+                    </button>
                   </div>
                 </div>
               ))}
-            </div>
-            
-            <div className="text-center mt-12">
-              <button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300 relative overflow-hidden group">
-                <span className="relative z-10">View All Projects</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </button>
             </div>
           </div>
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 bg-slate-900 text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-indigo-900/30 to-purple-900/30"></div>
+        <section className="py-20 bg-black text-white relative overflow-hidden border-t border-yellow-400/20">
+          <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/30 to-black"></div>
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-5xl md:text-6xl font-black mb-6">
-                <span className="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
                   Frequently Asked
                 </span>
               </h2>
-              <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              <p className="text-xl text-gray-300">
                 Get answers to common questions about our premium property services.
               </p>
             </div>
             
-            <div className="space-y-6">
+            <div className="space-y-4">
               {faqs.map((faq, index) => (
-                <div key={index} className="bg-slate-800 rounded-2xl border border-slate-700 overflow-hidden">
+                <div key={index} className="bg-gray-900 rounded-2xl border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 overflow-hidden">
                   <button
                     onClick={() => toggleFaq(index)}
-                    className="w-full px-8 py-6 text-left flex items-center justify-between hover:bg-slate-700 transition-colors duration-300"
+                    className="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors duration-300"
                   >
                     <span className="text-lg font-semibold text-white">{faq.question}</span>
                     <ChevronDown 
-                      className={`text-indigo-400 transition-transform duration-300 ${
+                      className={`text-yellow-400 transition-transform duration-300 ${
                         openFaq === index ? 'rotate-180' : ''
                       }`} 
                       size={24} 
                     />
                   </button>
                   <div className={`px-8 transition-all duration-300 ${
-                    openFaq === index ? 'pb-6 max-h-96' : 'max-h-0 overflow-hidden'
+                    openFaq === index ? 'pb-6 opacity-100' : 'pb-0 opacity-0 max-h-0 overflow-hidden'
                   }`}>
-                    <p className="text-slate-300 leading-relaxed">{faq.answer}</p>
+                    <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
                   </div>
                 </div>
               ))}
@@ -608,155 +607,136 @@ function App() {
           </div>
         </section>
 
-        {/* Contact Form Section */}
-        <section id="inquiry" className="py-20 bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-black/20"></div>
-          <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-black mb-6 text-white">
-                Start Your Project
-              </h2>
-              <p className="text-xl text-indigo-100 max-w-3xl mx-auto">
-                Ready to transform your space? Get in touch for a free consultation and detailed quote.
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-              {/* Contact Info */}
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-3xl font-bold mb-8 text-white">Get In Touch</h3>
-                  <div className="space-y-6">
-                    <div className="flex items-center">
-                      <div className="bg-white/10 backdrop-blur-sm p-4 rounded-2xl mr-6">
-                        <Phone className="text-white" size={24} />
-                      </div>
-                      <div>
-                        <p className="text-indigo-100 text-sm">Call Us</p>
-                        <p className="text-white text-xl font-semibold">+1 (555) 123-4567</p>
-                      </div>
+        {/* Contact Section */}
+        <section id="contact" className="py-20 bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 text-black relative overflow-hidden">
+          <div className="absolute inset-0 bg-black/5"></div>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <h2 className="text-5xl md:text-6xl font-black mb-8 text-black">
+                  Get In Touch
+                </h2>
+                <p className="text-xl text-black/80 mb-8 leading-relaxed">
+                  Ready to transform your space? Contact us today for a free consultation and discover how we can bring your vision to life.
+                </p>
+                
+                <div className="space-y-6">
+                  <div className="flex items-center">
+                    <div className="bg-black/10 p-4 rounded-2xl mr-4">
+                      <Phone className="text-black" size={24} />
                     </div>
-                    <div className="flex items-center">
-                      <div className="bg-white/10 backdrop-blur-sm p-4 rounded-2xl mr-6">
-                        <Mail className="text-white" size={24} />
-                      </div>
-                      <div>
-                        <p className="text-indigo-100 text-sm">Email Us</p>
-                        <p className="text-white text-xl font-semibold">info@apexproperty.com</p>
-                      </div>
+                    <div>
+                      <h3 className="font-bold text-black">Call Us</h3>
+                      <p className="text-black/80">+1 (555) 123-4567</p>
                     </div>
-                    <div className="flex items-center">
-                      <div className="bg-white/10 backdrop-blur-sm p-4 rounded-2xl mr-6">
-                        <MessageSquare className="text-white" size={24} />
-                      </div>
-                      <div>
-                        <p className="text-indigo-100 text-sm">Live Chat</p>
-                        <p className="text-white text-xl font-semibold">Available 24/7</p>
-                      </div>
+                  </div>
+                  
+                  <div className="flex items-center">
+                    <div className="bg-black/10 p-4 rounded-2xl mr-4">
+                      <Mail className="text-black" size={24} />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-black">Email Us</h3>
+                      <p className="text-black/80">Info@zentram.com.au</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center">
+                    <div className="bg-black/10 p-4 rounded-2xl mr-4">
+                      <MessageSquare className="text-black" size={24} />
+                    </div>
+                    <div>
+                      <h3 className="font-bold text-black">Live Chat</h3>
+                      <p className="text-black/80">Available 24/7 for support</p>
                     </div>
                   </div>
                 </div>
               </div>
-
-              {/* Contact Form */}
-              <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
+              
+              <div className="bg-black/90 backdrop-blur-lg p-8 rounded-3xl border border-yellow-400/50 shadow-2xl">
+                <h3 className="text-2xl font-bold text-yellow-400 mb-6">Request a Quote</h3>
+                
                 {showSuccessMessage && (
-                  <div className="mb-6 p-4 bg-green-500/20 border border-green-400/30 rounded-xl flex items-center">
-                    <CheckCircle className="text-green-400 mr-3" size={20} />
-                    <span className="text-green-100">Thank you! We'll contact you within 24 hours.</span>
+                  <div className="bg-green-500/20 border border-green-500/50 text-green-400 p-4 rounded-lg mb-6 flex items-center">
+                    <CheckCircle className="mr-3" size={20} />
+                    <span>Thank you! We'll get back to you within 24 hours.</span>
                   </div>
                 )}
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
-                        Full Name *
-                      </label>
+                      <label className="block text-sm font-medium text-gray-300 mb-2">Name *</label>
                       <input
                         type="text"
-                        id="name"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent backdrop-blur-sm"
+                        className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-yellow-400 focus:outline-none transition-colors duration-300"
                         placeholder="Your full name"
                       />
                     </div>
+                    
                     <div>
-                      <label htmlFor="telephone" className="block text-sm font-medium text-white mb-2">
-                        Phone Number
-                      </label>
+                      <label className="block text-sm font-medium text-gray-300 mb-2">Phone *</label>
                       <input
                         type="tel"
-                        id="telephone"
                         name="telephone"
                         value={formData.telephone}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent backdrop-blur-sm"
+                        required
+                        className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-yellow-400 focus:outline-none transition-colors duration-300"
                         placeholder="Your phone number"
                       />
                     </div>
                   </div>
                   
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
-                      Email Address *
-                    </label>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Email *</label>
                     <input
                       type="email"
-                      id="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent backdrop-blur-sm"
-                      placeholder="your@email.com"
+                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-yellow-400 focus:outline-none transition-colors duration-300"
+                      placeholder="your.email@example.com"
                     />
                   </div>
                   
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="propertyType" className="block text-sm font-medium text-white mb-2">
-                        Property Type
-                      </label>
-                      <select
-                        id="propertyType"
-                        name="propertyType"
-                        value={formData.propertyType}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent backdrop-blur-sm"
-                      >
-                        <option value="" className="text-slate-800">Select property type</option>
-                        <option value="residential" className="text-slate-800">Residential</option>
-                        <option value="commercial" className="text-slate-800">Commercial</option>
-                        <option value="industrial" className="text-slate-800">Industrial</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label htmlFor="propertyAddress" className="block text-sm font-medium text-white mb-2">
-                        Property Address
-                      </label>
-                      <input
-                        type="text"
-                        id="propertyAddress"
-                        name="propertyAddress"
-                        value={formData.propertyAddress}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent backdrop-blur-sm"
-                        placeholder="Property address"
-                      />
-                    </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Property Type</label>
+                    <select
+                      name="propertyType"
+                      value={formData.propertyType}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-yellow-400 focus:outline-none transition-colors duration-300"
+                    >
+                      <option value="">Select property type</option>
+                      <option value="residential">Residential</option>
+                      <option value="commercial">Commercial</option>
+                      <option value="industrial">Industrial</option>
+                    </select>
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-white mb-4">
-                      Services Required (Select all that apply)
-                    </label>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Property Address</label>
+                    <input
+                      type="text"
+                      name="propertyAddress"
+                      value={formData.propertyAddress}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-yellow-400 focus:outline-none transition-colors duration-300"
+                      placeholder="Property address (optional)"
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-300 mb-3">Services Required</label>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                       {services.map((service) => (
-                        <label key={service} className="flex items-center cursor-pointer group">
+                        <label key={service} className="flex items-center cursor-pointer">
                           <input
                             type="checkbox"
                             name="servicesRequired"
@@ -765,42 +745,39 @@ function App() {
                             onChange={handleChange}
                             className="sr-only"
                           />
-                          <div className={`w-5 h-5 rounded border-2 border-white/40 mr-3 flex items-center justify-center transition-all duration-200 ${
-                            formData.servicesRequired.includes(service) 
-                              ? 'bg-white border-white' 
-                              : 'group-hover:border-white/60'
+                          <div className={`w-5 h-5 rounded border-2 mr-3 flex items-center justify-center transition-colors duration-300 ${
+                            formData.servicesRequired.includes(service)
+                              ? 'bg-yellow-400 border-yellow-400'
+                              : 'border-gray-600 hover:border-yellow-400'
                           }`}>
                             {formData.servicesRequired.includes(service) && (
-                              <CheckCircle className="text-indigo-600" size={12} />
+                              <CheckCircle className="text-black" size={12} />
                             )}
                           </div>
-                          <span className="text-white/90 group-hover:text-white text-sm">{service}</span>
+                          <span className="text-gray-300 text-sm">{service}</span>
                         </label>
                       ))}
                     </div>
                   </div>
                   
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
-                      Project Details
-                    </label>
+                    <label className="block text-sm font-medium text-gray-300 mb-2">Project Details</label>
                     <textarea
-                      id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      rows={4}
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent backdrop-blur-sm resize-none"
-                      placeholder="Tell us about your project requirements, timeline, and any specific needs..."
+                      rows="4"
+                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-yellow-400 focus:outline-none transition-colors duration-300 resize-none"
+                      placeholder="Tell us about your project, timeline, and any specific requirements..."
                     ></textarea>
                   </div>
                   
                   <button
                     type="submit"
-                    className="w-full bg-white text-indigo-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-slate-100 hover:scale-105 transition-all duration-300 flex items-center justify-center group"
+                    className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-black py-4 px-8 rounded-lg font-bold hover:shadow-2xl hover:shadow-yellow-400/25 hover:scale-105 transition-all duration-300 relative overflow-hidden group"
                   >
-                    <span>Send Inquiry</span>
-                    <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
+                    <span className="relative z-10">Send Request</span>
+                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </button>
                 </form>
               </div>
@@ -808,85 +785,109 @@ function App() {
           </div>
         </section>
 
-        {/* Footer */}
-        <footer id="contact" className="bg-slate-900 text-white py-16 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-indigo-900/20 to-purple-900/20"></div>
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-              <div className="lg:col-span-2">
-                <div className="flex items-center mb-6">
-                  <span className="text-4xl font-black bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                    APEX
-                  </span>
-                </div>
-                <p className="text-slate-300 mb-6 text-lg leading-relaxed max-w-md">
-                  Transforming properties with premium craftsmanship and unmatched attention to detail. 
-                  Your vision, our expertise.
-                </p>
-                <div className="flex space-x-6">
-                  <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-3 rounded-2xl hover:scale-110 transition-transform duration-300 cursor-pointer">
-                    <Phone className="text-white" size={20} />
-                  </div>
-                  <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-3 rounded-2xl hover:scale-110 transition-transform duration-300 cursor-pointer">
-                    <Mail className="text-white" size={20} />
-                  </div>
-                  <div className="bg-gradient-to-br from-indigo-500 to-purple-600 p-3 rounded-2xl hover:scale-110 transition-transform duration-300 cursor-pointer">
-                    <MessageSquare className="text-white" size={20} />
-                  </div>
-                </div>
-              </div>
+        {/* Inquiry Section */}
+        <section id="inquiry" className="py-20 bg-black text-white relative overflow-hidden border-t border-yellow-400/20">
+          <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/50 to-black"></div>
+          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-5xl md:text-6xl font-black mb-6">
+              <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
+                Ready to Transform?
+              </span>
+            </h2>
+            <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+              Take the first step towards your dream space. Our experts are ready to make your vision a reality.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="group bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-10 py-4 rounded-full text-lg font-bold hover:shadow-2xl hover:shadow-yellow-400/25 hover:scale-105 transition-all duration-300 relative overflow-hidden"
+              >
+                <span className="relative z-10 flex items-center">
+                  Get Free Quote
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </button>
               
-              <div>
-                <h3 className="text-xl font-bold mb-6 text-white">Services</h3>
-                <ul className="space-y-3">
-                  {services.slice(0, 4).map((service) => (
-                    <li key={service}>
-                      <a href="#" className="text-slate-300 hover:text-indigo-400 transition-colors duration-300">
-                        {service}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+              <div className="flex items-center text-gray-300">
+                <Phone className="mr-3 text-yellow-400" size={20} />
+                <span className="text-lg">Call us: +1 (555) 123-4567</span>
               </div>
-              
-              <div>
-                <h3 className="text-xl font-bold mb-6 text-white">Quick Links</h3>
-                <ul className="space-y-3">
-                  {['About Us', 'Our Process', 'Portfolio', 'Contact', 'Get Quote'].map((link) => (
-                    <li key={link}>
-                      <button
-                        onClick={() => scrollToSection(link.toLowerCase().replace(' ', ''))}
-                        className="text-slate-300 hover:text-indigo-400 transition-colors duration-300 text-left"
-                      >
-                        {link}
-                      </button>
-                    </li>
-                  ))}
-                </ul>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-16 border-t border-yellow-400/20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div className="md:col-span-2">
+              <div className="flex items-center mb-6">
+                <span className="text-3xl font-black bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent mr-4">
+                   Zentra M & CO
+                </span>
+                <div className="h-8 w-px bg-yellow-400/50"></div>
+                <span className="ml-4 text-gray-300">Property Solutions</span>
+              </div>
+              <p className="text-gray-300 mb-6 max-w-md">
+                Transforming properties with premium craftsmanship and exceptional service. 
+                Your vision, our expertise, extraordinary results.
+              </p>
+              <div className="flex space-x-4">
+                {['facebook', 'twitter', 'instagram', 'linkedin'].map((social) => (
+                  <button
+                    key={social}
+                    className="bg-gray-800 hover:bg-yellow-400 hover:text-black p-3 rounded-full transition-all duration-300 group"
+                  >
+                    <MessageSquare size={20} />
+                  </button>
+                ))}
               </div>
             </div>
             
-            <div className="border-t border-slate-700 mt-12 pt-8">
-              <div className="flex flex-col md:flex-row justify-between items-center">
-                <p className="text-slate-400 text-sm">
-                  © 2024 APEX Property Services. All rights reserved.
-                </p>
-                <div className="flex space-x-6 mt-4 md:mt-0">
-                  <a href="#" className="text-slate-400 hover:text-indigo-400 text-sm transition-colors duration-300">
-                    Privacy Policy
-                  </a>
-                  <a href="#" className="text-slate-400 hover:text-indigo-400 text-sm transition-colors duration-300">
-                    Terms of Service
-                  </a>
-                  <a href="#" className="text-slate-400 hover:text-indigo-400 text-sm transition-colors duration-300">
-                    Cookie Policy
-                  </a>
+            <div>
+              <h3 className="text-lg font-bold mb-4 text-yellow-400">Services</h3>
+              <ul className="space-y-2">
+                {services.slice(0, 4).map((service) => (
+                  <li key={service}>
+                    <button className="text-gray-300 hover:text-yellow-400 transition-colors duration-300">
+                      {service}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="text-lg font-bold mb-4 text-yellow-400">Contact Info</h3>
+              <div className="space-y-3">
+                <div className="flex items-center text-gray-300">
+                  <Phone size={16} className="mr-3 text-yellow-400" />
+                  <span>+1 (555) 123-4567</span>
+                </div>
+                <div className="flex items-center text-gray-300">
+                  <Mail size={16} className="mr-3 text-yellow-400" />
+                  <span>Info@zentram.com.au</span>
+                </div>
+                <div className="flex items-center text-gray-300">
+                  <Building size={16} className="mr-3 text-yellow-400" />
+                  <span>123 Business Ave, City, State 12345</span>
                 </div>
               </div>
             </div>
           </div>
-        </footer>
-        </main>
+          
+          <div className="border-t border-gray-800 mt-12 pt-8 text-center">
+            <p className="text-gray-400">
+              © 2024 Apex Property Solutions. All rights reserved. | 
+              <button className="hover:text-yellow-400 transition-colors duration-300 ml-1">Privacy Policy</button> | 
+              <button className="hover:text-yellow-400 transition-colors duration-300 ml-1">Terms of Service</button>
+            </p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
