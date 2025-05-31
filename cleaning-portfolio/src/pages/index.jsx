@@ -866,39 +866,6 @@ function App() {
           </div>
         </section>
 
-        {/* Inquiry Section */}
-        <section id="inquiry" className="py-20 bg-black text-white relative overflow-hidden border-t border-yellow-400/20">
-          <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/50 to-black"></div>
-          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-5xl md:text-6xl font-black mb-6">
-              <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
-                Ready to Transform?
-              </span>
-            </h2>
-            <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
-              Take the first step towards your dream space. Our experts are ready to make your vision a reality.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="group bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-10 py-4 rounded-full text-lg font-bold hover:shadow-2xl hover:shadow-yellow-400/25 hover:scale-105 transition-all duration-300 relative overflow-hidden"
-              >
-                <span className="relative z-10 flex items-center">
-                  Get Free Quote
-                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
-                </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </button>
-              
-              <div className="flex items-center text-gray-300">
-                <Phone className="mr-3 text-yellow-400" size={20} />
-                <span className="text-lg">Call us: +61 414 463 184</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* WhatsApp Contact Section */}
         <section className="py-20 bg-black text-white relative overflow-hidden border-t border-yellow-400/20">
           <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/30 to-black"></div>
