@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Phone, Hammer, Paintbrush, Leaf, LayoutGrid, Brush, Sparkles, ChevronDown, CheckCircle, Code, Briefcase, Award, Quote, CalendarDays, CheckCircle2, Home, Building, MessageSquare, Star, ArrowRight, Play, Shield, Clock, Users } from 'lucide-react';
+import { Mail, Phone, Hammer, Paintbrush, Leaf, LayoutGrid, Brush, Sparkles, ChevronDown, CheckCircle, Code, Briefcase, Award, Quote, CalendarDays, CheckCircle2, Home, Building, MessageSquare, Star, ArrowRight, Play, Shield, Clock, Users, ChevronLeft, ChevronRight } from 'lucide-react';
 
 function App() {
   const [formData, setFormData] = useState({
@@ -15,14 +15,15 @@ function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
-
+  const [currentSlide, setCurrentSlide] = useState(0);
+  
   const services = [
     'Premium Cleaning',
     'Pressure Washing',
     'Interior & Exterior Painting',
     'Comprehensive Maintenance',
-    'Landscape Design',
-    'Luxury Flooring',
+    'Services',
+    'Flooring and Decking',
     'Web Design & Digital Solutions',
   ];
 
@@ -89,6 +90,11 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
   const toggleFaq = (index) => {
     setOpenFaq(openFaq === index ? null : index);
   };
@@ -151,6 +157,40 @@ function App() {
     }
   };
 
+  const images = [
+    {
+      url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+      alt: "Luxury Kitchen Design",
+      title: "Modern Kitchen Transformation",
+      description: "Complete renovation with premium materials and smart appliances"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1600566752355-35792bedcfea",
+      alt: "Contemporary Living Room",
+      title: "Contemporary Living Space",
+      description: "Open-concept design with bespoke furniture and lighting"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1600210492493-0946911123ea",
+      alt: "Luxury Bathroom",
+      title: "Spa-Like Bathroom",
+      description: "Luxurious bathroom renovation with high-end fixtures"
+    },
+    {
+      url: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
+      alt: "Outdoor Living",
+      title: "Outdoor Entertainment Area",
+      description: "Custom-designed outdoor space for year-round enjoyment"
+    }
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % images.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
 
   return (
     <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden">
@@ -307,7 +347,7 @@ function App() {
               {[
                 { number: '500+', label: 'Projects Completed', icon: Home },
                 { number: '98%', label: 'Client Satisfaction', icon: Star },
-                { number: '15+', label: 'Years Experience', icon: Award },
+                { number: '5+', label: 'Years Experience', icon: Award },
                 { number: '24/7', label: 'Support Available', icon: Shield }
               ].map((stat, index) => (
                 <div key={index} className="text-center group">
@@ -318,6 +358,71 @@ function App() {
                   <div className="text-gray-300 font-medium">{stat.label}</div>
                 </div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Our Gallery Section */}
+        <section className="py-20 bg-black text-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/50 to-black"></div>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl md:text-6xl font-black mb-6">
+                <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
+                  Our Gallery
+                </span>
+              </h2>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                Explore our portfolio of stunning transformations and premium projects.
+              </p>
+            </div>
+
+            <div className="relative aspect-[16/9] rounded-3xl overflow-hidden shadow-2xl border border-yellow-400/20">
+              {images.map((image, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-opacity duration-1000 ${
+                    currentSlide === index ? 'opacity-100' : 'opacity-0'
+                  }`}
+                >
+                  <img
+                    src={image.url}
+                    alt={image.alt}
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black to-transparent">
+                    <h3 className="text-2xl font-bold text-white mb-2">{image.title}</h3>
+                    <p className="text-gray-300">{image.description}</p>
+                  </div>
+                </div>
+              ))}
+              
+              <button
+                onClick={prevSlide}
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-black/50 hover:bg-yellow-400 text-white hover:text-black p-3 rounded-full transition-all duration-300"
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <button
+                onClick={nextSlide}
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-black/50 hover:bg-yellow-400 text-white hover:text-black p-3 rounded-full transition-all duration-300"
+              >
+                <ChevronRight size={24} />
+              </button>
+
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex space-x-2">
+                {images.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      currentSlide === index
+                        ? 'bg-yellow-400 w-8'
+                        : 'bg-white/50 hover:bg-white'
+                    }`}
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -475,7 +580,7 @@ function App() {
                   </span>
                 </h2>
                 <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                  We're not just contractors - we're space transformation specialists. With over 15 years of experience, 
+                  We're not just contractors - we're space transformation specialists. With over 5 of experience, 
                   we've mastered the art of turning ordinary properties into extraordinary spaces that reflect your vision and exceed your expectations.
                 </p>
                 <div className="space-y-6">
@@ -514,55 +619,6 @@ function App() {
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Projects Section */}
-        <section id="projects" className="py-20 bg-gray-900 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900"></div>
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-black mb-6">
-                <span className="bg-gradient-to-r from-white to-yellow-400 bg-clip-text text-transparent">
-                  Featured Projects
-                </span>
-              </h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                Explore our portfolio of stunning transformations and see how we bring visions to life.
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
-                { title: 'Modern Kitchen Renovation', category: 'Interior Design', image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&h=400&fit=crop' },
-                { title: 'Luxury Bathroom Suite', category: 'Premium Renovation', image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=500&h=400&fit=crop' },
-                { title: 'Garden Landscape Design', category: 'Outdoor Transformation', image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&h=400&fit=crop' },
-                { title: 'Commercial Office Space', category: 'Business Renovation', image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=500&h=400&fit=crop' },
-                { title: 'Exterior House Painting', category: 'Property Enhancement', image: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=500&h=400&fit=crop' },
-                { title: 'Luxury Flooring Installation', category: 'Premium Materials', image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&h=400&fit=crop' }
-              ].map((project, index) => (
-                <div key={index} className="group relative overflow-hidden rounded-3xl bg-black shadow-2xl hover:shadow-yellow-400/10 transition-all duration-500">
-                  <div className="aspect-w-16 aspect-h-12 overflow-hidden">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <div className="bg-yellow-400 text-black px-3 py-1 rounded-full text-xs font-bold inline-block mb-3">
-                      {project.category}
-                    </div>
-                    <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
-                    <button className="text-yellow-400 font-semibold flex items-center group-hover:text-yellow-300 transition-colors duration-300">
-                      View Project
-                      <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={16} />
-                    </button>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </section>
@@ -628,7 +684,7 @@ function App() {
                     </div>
                     <div>
                       <h3 className="font-bold text-black">Call Us</h3>
-                      <p className="text-black/80">+1 (555) 123-4567</p>
+                      <p className="text-black/80">+61 414 463 184</p>
                     </div>
                   </div>
                   
@@ -813,7 +869,7 @@ function App() {
               
               <div className="flex items-center text-gray-300">
                 <Phone className="mr-3 text-yellow-400" size={20} />
-                <span className="text-lg">Call us: +1 (555) 123-4567</span>
+                <span className="text-lg">Call us: ‪+61 414 463 184‬</span>
               </div>
             </div>
           </div>
@@ -840,7 +896,7 @@ function App() {
                 Get instant responses to your questions. We're here to help you transform your space.
               </p>
               <a
-                href="https://wa.me/94769346516?text=Hello!%20I'm%20interested%20in%20your%20services."
+                href="https://wa.me/+61414463184?text=Hello!%20I'm%20interested%20in%20your%20services."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-10 py-4 rounded-full text-lg font-bold hover:shadow-2xl hover:shadow-yellow-400/25 hover:scale-105 transition-all duration-300 inline-flex items-center space-x-3 relative overflow-hidden"
@@ -901,7 +957,7 @@ function App() {
                 <div className="space-y-3">
                   <div className="flex items-center text-gray-300">
                     <Phone size={16} className="mr-3 text-yellow-400" />
-                    <span>+1 (555) 123-4567</span>
+                    <span>‪+61 414 463 184‬</span>
                   </div>
                   <div className="flex items-center text-gray-300">
                     <Mail size={16} className="mr-3 text-yellow-400" />
