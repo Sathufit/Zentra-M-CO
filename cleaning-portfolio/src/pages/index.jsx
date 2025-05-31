@@ -22,10 +22,18 @@ function App() {
     'Pressure Washing',
     'Interior & Exterior Painting',
     'Comprehensive Maintenance',
-    'Services',
     'Flooring and Decking',
     'Web Design & Digital Solutions',
   ];
+
+  const serviceImages = {
+    'Premium Cleaning': 'https://images.unsplash.com/photo-1581578731548-c64695cc6952',
+    'Pressure Washing': 'https://images.unsplash.com/photo-1610641818989-c2051b5e2cfd',
+    'Interior & Exterior Painting': 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f',
+    'Comprehensive Maintenance': 'https://images.unsplash.com/photo-1581922819941-6ab31ab79afc',
+    'Flooring and Decking': 'https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6',
+    'Web Design & Digital Solutions': 'https://images.unsplash.com/photo-1547658719-da2b51169166'
+  };
 
   const testimonials = [
     {
@@ -485,31 +493,47 @@ function App() {
               {services.map((service, index) => {
                 const icons = [Brush, Sparkles, Paintbrush, Hammer, Leaf, LayoutGrid, Code];
                 const Icon = icons[index] || Briefcase;
+                
                 return (
                   <div key={index} className="group relative">
-                    <div className="bg-black p-8 rounded-3xl shadow-2xl border border-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300 group-hover:scale-105 group-hover:shadow-yellow-400/10 relative overflow-hidden">
-                      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
-                      <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300 shadow-lg shadow-yellow-400/25">
-                        <Icon className="text-black" size={24} />
-                      </div>
-                      <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-yellow-400 transition-colors duration-300">
-                        {service}
-                      </h3>
-                      <p className="text-gray-300 leading-relaxed">
-                        {service.includes('Cleaning') && 'Comprehensive cleaning solutions that leave your space spotless and refreshed with eco-friendly products.'}
-                        {service.includes('Pressure') && 'Professional pressure washing to restore surfaces and remove years of built-up grime and stains.'}
-                        {service.includes('Painting') && 'Expert painting services using premium materials for stunning, long-lasting interior and exterior finishes.'}
-                        {service.includes('Maintenance') && 'Complete property maintenance solutions to keep your investment in perfect condition year-round.'}
-                        {service.includes('Landscape') && 'Creative landscape design and installation that transforms outdoor spaces into beautiful, functional environments.'}
-                        {service.includes('Flooring') && 'Premium flooring installation and restoration using the finest materials and expert craftsmanship.'}
-                        {service.includes('Web') && 'Professional web design and digital solutions to establish your strong online presence and grow your business.'}
-                      </p>
-                      <div className="mt-6">
+                    <div className="relative bg-black p-8 rounded-3xl shadow-2xl border border-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300 group-hover:scale-105 group-hover:shadow-yellow-400/10 overflow-hidden h-full">
+                      {/* Background Image Layer - Increased opacity */}
+                      <div 
+                        className="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-50 transition-opacity duration-300"
+                        style={{
+                          backgroundImage: `url('${serviceImages[service]}')`,
+                          backgroundPosition: 'center',
+                          backgroundSize: 'cover',
+                        }}
+                      />
+                      
+                      {/* Dark Gradient Overlay - Reduced opacity */}
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/40" />
+                      
+                      {/* Content */}
+                      <div className="relative z-20">
+                        <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300 shadow-lg shadow-yellow-400/25">
+                          <Icon className="text-black" size={24} />
+                        </div>
+                        <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-yellow-400 transition-colors duration-300">
+                          {service}
+                        </h3>
+                        <p className="text-gray-100 leading-relaxed mb-6 text-shadow">
+                          {service.includes('Cleaning') && 'Comprehensive cleaning solutions that leave your space spotless and refreshed with eco-friendly products.'}
+                          {service.includes('Pressure') && 'Professional pressure washing to restore surfaces and remove years of built-up grime and stains.'}
+                          {service.includes('Painting') && 'Expert painting services using premium materials for stunning, long-lasting interior and exterior finishes.'}
+                          {service.includes('Maintenance') && 'Complete property maintenance solutions to keep your investment in perfect condition year-round.'}
+                          {service.includes('Flooring') && 'Premium flooring installation and restoration using the finest materials and expert craftsmanship.'}
+                          {service.includes('Web') && 'Professional web design and digital solutions to establish your strong online presence and grow your business.'}
+                        </p>
                         <button className="text-yellow-400 font-semibold flex items-center group-hover:text-yellow-300 transition-colors duration-300">
                           Learn More
                           <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={16} />
                         </button>
                       </div>
+
+                      {/* Top Border Gradient */}
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 z-20" />
                     </div>
                   </div>
                 );
@@ -869,7 +893,7 @@ function App() {
               
               <div className="flex items-center text-gray-300">
                 <Phone className="mr-3 text-yellow-400" size={20} />
-                <span className="text-lg">Call us: ‪+61 414 463 184‬</span>
+                <span className="text-lg">Call us: +61 414 463 184</span>
               </div>
             </div>
           </div>
@@ -957,7 +981,7 @@ function App() {
                 <div className="space-y-3">
                   <div className="flex items-center text-gray-300">
                     <Phone size={16} className="mr-3 text-yellow-400" />
-                    <span>‪+61 414 463 184‬</span>
+                    <span>+61 414 463 184</span>
                   </div>
                   <div className="flex items-center text-gray-300">
                     <Mail size={16} className="mr-3 text-yellow-400" />
