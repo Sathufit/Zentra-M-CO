@@ -434,46 +434,6 @@ function App() {
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section className="py-20 bg-gray-900 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-gray-900 to-black"></div>
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-8"
-            >
-              {[
-                { number: '500+', label: 'Projects Completed', icon: Home },
-                { number: '98%', label: 'Client Satisfaction', icon: Star },
-                { number: '5+', label: 'Years Experience', icon: Award },
-                { number: '24/7', label: 'Support Available', icon: Shield }
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  className="text-center group"
-                >
-                  <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-yellow-400/25">
-                    <stat.icon className="text-black" size={24} />
-                  </div>
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="text-3xl md:text-4xl font-black text-yellow-400 mb-2"
-                  >
-                    {stat.number}
-                  </motion.div>
-                  <div className="text-gray-300 font-medium">{stat.label}</div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-
         {/* Services Section */}
         <section id="services" className="py-20 bg-gray-900 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900"></div>
@@ -548,6 +508,46 @@ function App() {
                   </motion.div>
                 );
               })}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Stats Section */}
+        <section className="py-20 bg-gray-900 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-r from-black via-gray-900 to-black"></div>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <motion.div
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              className="grid grid-cols-2 md:grid-cols-4 gap-8"
+            >
+              {[
+                { number: '500+', label: 'Projects Completed', icon: Home },
+                { number: '98%', label: 'Client Satisfaction', icon: Star },
+                { number: '5+', label: 'Years Experience', icon: Award },
+                { number: '24/7', label: 'Support Available', icon: Shield }
+              ].map((stat, index) => (
+                <motion.div
+                  key={index}
+                  variants={fadeInUp}
+                  className="text-center group"
+                >
+                  <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-yellow-400/25">
+                    <stat.icon className="text-black" size={24} />
+                  </div>
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="text-3xl md:text-4xl font-black text-yellow-400 mb-2"
+                  >
+                    {stat.number}
+                  </motion.div>
+                  <div className="text-gray-300 font-medium">{stat.label}</div>
+                </motion.div>
+              ))}
             </motion.div>
           </div>
         </section>
