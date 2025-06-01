@@ -125,7 +125,7 @@ function App() {
     }
   };
 
-  const FORMSPREE_ENDPOINT = "https://formspree.io/f/mqaqvwev";
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/meokjwar";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
