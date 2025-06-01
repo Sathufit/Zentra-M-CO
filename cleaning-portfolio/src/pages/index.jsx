@@ -271,9 +271,15 @@ function App() {
           <div className="flex justify-between h-20">
             <div className="flex items-center">
               <div className="flex-shrink-0 relative group">
-                <span className="text-3xl font-black bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent">
-                  Zentra M & CO
-                </span>
+                <img
+                  src="images/logo2.png"
+                  alt="Zentra M & CO Logo"
+                  className="h-30 md:h-42 w-auto object-contain hover:scale-105 transition-transform duration-300"
+                  style={{
+                    maxWidth: '300px',
+                    minWidth: '240px'
+                  }}
+                />
                 <div className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
               </div>
             </div>
@@ -281,7 +287,9 @@ function App() {
               {['Home', 'About', 'Services', 'Projects', 'Contact'].map((item) => (
                 <button
                   key={item}
-                  onClick={() => scrollToSection(item.toLowerCase() === 'home' ? 'hero' : item.toLowerCase())}
+                  onClick={() => scrollToSection(item.toLowerCase() === 'home' ? 'hero' : 
+                                               item.toLowerCase() === 'projects' ? 'gallery' : 
+                                               item.toLowerCase())}
                   className="relative text-gray-300 hover:text-yellow-400 px-3 py-2 text-sm font-semibold transition-all duration-300 group"
                 >
                   {item}
@@ -300,16 +308,24 @@ function App() {
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-yellow-400 focus:outline-none"
+                aria-expanded="false"
               >
                 <div className="w-6 h-6 relative">
-                  <span className={`absolute h-0.5 w-6 bg-current transform transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 top-3' : 'top-1'}`}></span>
-                  <span className={`absolute h-0.5 w-6 bg-current transform transition-all duration-300 top-3 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-                  <span className={`absolute h-0.5 w-6 bg-current transform transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 top-3' : 'top-5'}`}></span>
+                  <span className={`absolute h-0.5 w-6 bg-current transform transition-all duration-300 ease-in-out ${
+        isMobileMenuOpen ? 'rotate-45 translate-y-2.5' : ''
+      }`} />
+      <span className={`absolute h-0.5 w-6 bg-current transform transition-all duration-300 ease-in-out ${
+        isMobileMenuOpen ? 'opacity-0' : 'translate-y-2'
+      }`} />
+      <span className={`absolute h-0.5 w-6 bg-current transform transition-all duration-300 ease-in-out ${
+        isMobileMenuOpen ? '-rotate-45 translate-y-2.5' : 'translate-y-4'
+      }`} />
                 </div>
               </button>
             </div>
           </div>
         </div>
+      </nav>
 
         {/* Mobile menu */}
         <div className={`md:hidden transition-all duration-300 ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden bg-black/95 backdrop-blur-lg border-t border-yellow-400/20`}>
@@ -331,7 +347,6 @@ function App() {
             </button>
           </div>
         </div>
-      </nav>
 
       <main className="pt-20">
         {/* Hero Section */}
@@ -459,6 +474,84 @@ function App() {
           </div>
         </section>
 
+        {/* Services Section */}
+        <section id="services" className="py-20 bg-gray-900 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900"></div>
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-5xl md:text-6xl font-black mb-6">
+                <span className="bg-gradient-to-r from-white to-yellow-400 bg-clip-text text-transparent">
+                  Premium Services
+                </span>
+              </h2>
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                Comprehensive property solutions delivered with exceptional craftsmanship and attention to detail.
+              </p>
+            </div>
+            
+            <motion.div 
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {services.map((service, index) => {
+                const icons = [Brush, Sparkles, Paintbrush, Hammer, Leaf, LayoutGrid, Code];
+                const Icon = icons[index] || Briefcase;
+                
+                return (
+                  <motion.div
+                    key={index}
+                    variants={fadeInUp}
+                    className="group relative"
+                  >
+                    <div className="relative bg-black p-8 rounded-3xl shadow-2xl border border-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300 group-hover:scale-105 group-hover:shadow-yellow-400/10 overflow-hidden h-full">
+                      {/* Background Image Layer - Increased opacity */}
+                      <div 
+                        className="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-50 transition-opacity duration-300"
+                        style={{
+                          backgroundImage: `url('${serviceImages[service]}')`,
+                          backgroundPosition: 'center',
+                          backgroundSize: 'cover',
+                        }}
+                      />
+                      
+                      {/* Dark Gradient Overlay - Reduced opacity */}
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/40" />
+                      
+                      {/* Content */}
+                      <div className="relative z-20">
+                        <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300 shadow-lg shadow-yellow-400/25">
+                          <Icon className="text-black" size={24} />
+                        </div>
+                        <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-yellow-400 transition-colors duration-300">
+                          {service}
+                        </h3>
+                        <p className="text-gray-100 leading-relaxed mb-6 text-shadow">
+                          {service.includes('Cleaning') && 'Comprehensive cleaning solutions that leave your space spotless and refreshed with eco-friendly products.'}
+                          {service.includes('Pressure') && 'Professional pressure washing to restore surfaces and remove years of built-up grime and stains.'}
+                          {service.includes('Painting') && 'Expert painting services using premium materials for stunning, long-lasting interior and exterior finishes.'}
+                          {service.includes('Maintenance') && 'Complete property maintenance solutions to keep your investment in perfect condition year-round.'}
+                          {service.includes('Flooring') && 'Premium flooring installation and restoration using the finest materials and expert craftsmanship.'}
+                          {service.includes('Web') && 'Professional web design and digital solutions to establish your strong online presence and grow your business.'}
+                        </p>
+                        <button className="text-yellow-400 font-semibold flex items-center group-hover:text-yellow-300 transition-colors duration-300">
+                          Learn More
+                          <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={16} />
+                        </button>
+                      </div>
+
+                      {/* Top Border Gradient */}
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 z-20" />
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+          </div>
+        </section>
+
         {/* Our Gallery Section */}
         <section id="gallery" className="py-20 bg-black text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/50 to-black"></div>
@@ -570,84 +663,6 @@ function App() {
                 </div>
               ))}
             </div>
-          </div>
-        </section>
-
-        {/* Services Section */}
-        <section id="services" className="py-20 bg-gray-900 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900"></div>
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-black mb-6">
-                <span className="bg-gradient-to-r from-white to-yellow-400 bg-clip-text text-transparent">
-                  Premium Services
-                </span>
-              </h2>
-              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-                Comprehensive property solutions delivered with exceptional craftsmanship and attention to detail.
-              </p>
-            </div>
-            
-            <motion.div 
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            >
-              {services.map((service, index) => {
-                const icons = [Brush, Sparkles, Paintbrush, Hammer, Leaf, LayoutGrid, Code];
-                const Icon = icons[index] || Briefcase;
-                
-                return (
-                  <motion.div
-                    key={index}
-                    variants={fadeInUp}
-                    className="group relative"
-                  >
-                    <div className="relative bg-black p-8 rounded-3xl shadow-2xl border border-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300 group-hover:scale-105 group-hover:shadow-yellow-400/10 overflow-hidden h-full">
-                      {/* Background Image Layer - Increased opacity */}
-                      <div 
-                        className="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-50 transition-opacity duration-300"
-                        style={{
-                          backgroundImage: `url('${serviceImages[service]}')`,
-                          backgroundPosition: 'center',
-                          backgroundSize: 'cover',
-                        }}
-                      />
-                      
-                      {/* Dark Gradient Overlay - Reduced opacity */}
-                      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/40" />
-                      
-                      {/* Content */}
-                      <div className="relative z-20">
-                        <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300 shadow-lg shadow-yellow-400/25">
-                          <Icon className="text-black" size={24} />
-                        </div>
-                        <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-yellow-400 transition-colors duration-300">
-                          {service}
-                        </h3>
-                        <p className="text-gray-100 leading-relaxed mb-6 text-shadow">
-                          {service.includes('Cleaning') && 'Comprehensive cleaning solutions that leave your space spotless and refreshed with eco-friendly products.'}
-                          {service.includes('Pressure') && 'Professional pressure washing to restore surfaces and remove years of built-up grime and stains.'}
-                          {service.includes('Painting') && 'Expert painting services using premium materials for stunning, long-lasting interior and exterior finishes.'}
-                          {service.includes('Maintenance') && 'Complete property maintenance solutions to keep your investment in perfect condition year-round.'}
-                          {service.includes('Flooring') && 'Premium flooring installation and restoration using the finest materials and expert craftsmanship.'}
-                          {service.includes('Web') && 'Professional web design and digital solutions to establish your strong online presence and grow your business.'}
-                        </p>
-                        <button className="text-yellow-400 font-semibold flex items-center group-hover:text-yellow-300 transition-colors duration-300">
-                          Learn More
-                          <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={16} />
-                        </button>
-                      </div>
-
-                      {/* Top Border Gradient */}
-                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 z-20" />
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
           </div>
         </section>
 
@@ -1091,6 +1106,174 @@ function App() {
           </div>
         </footer>
         </main>
+
+        {/* Mobile Menu Panel */}
+<div 
+  className={`md:hidden fixed inset-0 z-40 transform transition-all duration-300 ease-in-out ${
+    isMobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
+  }`}
+>
+  {/* Backdrop */}
+  <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
+  
+  {/* Menu Panel */}
+  <div className="absolute right-0 top-0 w-64 h-full bg-gray-900 shadow-2xl">
+    <div className="flex flex-col h-full">
+      {/* Logo Section */}
+      <div className="flex items-center justify-between p-4 border-b border-yellow-400/20">
+        <span className="text-xl font-bold text-yellow-400">Menu</span>
+        <button 
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="p-2 rounded-full hover:bg-yellow-400/10 text-gray-400 hover:text-yellow-400"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Navigation Links */}
+      <div className="flex-1 px-2 py-4 space-y-1 overflow-y-auto">
+        {['Home', 'About', 'Services', 'Projects', 'Contact'].map((item) => (
+          <button
+            key={item}
+            onClick={() => {
+              scrollToSection(item.toLowerCase() === 'home' ? 'hero' : 
+                            item.toLowerCase() === 'projects' ? 'gallery' : 
+                            item.toLowerCase());
+              setIsMobileMenuOpen(false);
+            }}
+            className="w-full px-4 py-3 text-left text-gray-300 hover:text-yellow-400 hover:bg-yellow-400/10 rounded-lg transition-all duration-300 flex items-center space-x-2"
+          >
+            <span>{item}</span>
+          </button>
+        ))}
+      </div>
+
+      {/* Call to Action Button */}
+      <div className="p-4 border-t border-yellow-400/20">
+        <button
+          onClick={() => {
+            scrollToSection('inquiry');
+            setIsMobileMenuOpen(false);
+          }}
+          className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-4 py-3 rounded-lg text-sm font-bold hover:shadow-lg hover:shadow-yellow-400/25 transition-all duration-300 flex items-center justify-center space-x-2"
+        >
+          <span>Get Quote</span>
+          <ArrowRight size={16} />
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{/* Mobile Menu Overlay */}
+<div 
+  className={`fixed inset-0 z-50 ${isMobileMenuOpen ? 'visible opacity-100' : 'invisible opacity-0'} transition-all duration-300`}
+>
+  {/* Backdrop */}
+  <div 
+    className={`absolute inset-0 bg-black/80 backdrop-blur-md ${
+      isMobileMenuOpen ? 'opacity-100' : 'opacity-0'
+    } transition-opacity duration-300`}
+    onClick={() => setIsMobileMenuOpen(false)}
+  />
+
+  {/* Menu Panel */}
+  <div 
+    className={`absolute top-0 right-0 w-80 h-full bg-gradient-to-b from-gray-900 to-black border-l border-yellow-400/20 shadow-2xl transform ${
+      isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+    } transition-transform duration-500 ease-out`}
+  >
+    {/* Header */}
+    <div className="flex items-center justify-between p-6 border-b border-yellow-400/20">
+      <img
+        src="images/logo2.png"
+        alt="Zentra M & CO"
+        className="h-8 w-auto"
+      />
+      <button 
+        onClick={() => setIsMobileMenuOpen(false)}
+        className="p-2 rounded-full hover:bg-yellow-400/10 text-gray-400 hover:text-yellow-400 transition-colors duration-300"
+      >
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    {/* Navigation Links */}
+    <div className="px-4 py-6 space-y-2 overflow-y-auto">
+      {['Home', 'About', 'Services', 'Projects', 'Contact'].map((item, index) => (
+        <button
+          key={item}
+          onClick={() => {
+            scrollToSection(item.toLowerCase() === 'home' ? 'hero' : 
+                          item.toLowerCase() === 'projects' ? 'gallery' : 
+                          item.toLowerCase());
+            setIsMobileMenuOpen(false);
+          }}
+          className={`w-full group px-4 py-4 text-left rounded-xl transition-all duration-300 
+            ${index === 0 ? 'bg-yellow-400/10 text-yellow-400' : 'text-gray-300 hover:bg-yellow-400/10'}
+            flex items-center justify-between`}
+          style={{
+            transitionDelay: `${index * 50}ms`
+          }}
+        >
+          <span className="font-medium">{item}</span>
+          <div className={`w-6 h-6 rounded-full flex items-center justify-center
+            ${index === 0 ? 'bg-yellow-400/20' : 'bg-transparent group-hover:bg-yellow-400/20'}
+            transition-all duration-300`}
+          >
+            <ArrowRight size={14} className={`transform ${
+              index === 0 ? 'text-yellow-400' : 'text-gray-400 group-hover:text-yellow-400'
+            } group-hover:translate-x-0.5 transition-all duration-300`} />
+          </div>
+        </button>
+      ))}
+    </div>
+
+    {/* Contact Section */}
+    <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-yellow-400/20 bg-gradient-to-t from-gray-900 to-transparent">
+      <div className="space-y-4">
+        <button
+          onClick={() => {
+            scrollToSection('contact');
+            setIsMobileMenuOpen(false);
+          }}
+          className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-6 py-4 rounded-xl 
+            font-bold hover:shadow-lg hover:shadow-yellow-400/25 hover:scale-[1.02] transform transition-all duration-300
+            flex items-center justify-center space-x-2"
+        >
+          <span>Get Quote</span>
+          <ArrowRight size={18} />
+        </button>
+        
+        {/* Quick Contact */}
+        <div className="grid grid-cols-2 gap-3">
+          <a
+            href="tel:+61414463184"
+            className="flex items-center justify-center space-x-2 px-4 py-3 rounded-xl
+              bg-yellow-400/10 text-yellow-400 hover:bg-yellow-400/20 transition-all duration-300"
+          >
+            <Phone size={16} />
+            <span className="font-medium">Call Us</span>
+          </a>
+          <a
+            href="https://wa.me/+61414463184"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center space-x-2 px-4 py-3 rounded-xl
+              bg-yellow-400/10 text-yellow-400 hover:bg-yellow-400/20 transition-all duration-300"
+          >
+            <MessageSquare size={16} />
+            <span className="font-medium">WhatsApp</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
     </div>
   );
 }
