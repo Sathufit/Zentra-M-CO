@@ -167,28 +167,40 @@ function App() {
 
   const images = [
     {
-      url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
-      alt: "Luxury Kitchen Design",
-      title: "Modern Kitchen Transformation",
-      description: "Complete renovation with premium materials and smart appliances"
+      url: "/images/1.jpeg", // Update path to match your public folder structure
+      alt: "Premium Property Service",
+      title: "Premium Cleaning Solutions",
+      description: "Professional cleaning services for residential and commercial spaces"
     },
     {
-      url: "https://images.unsplash.com/photo-1600566752355-35792bedcfea",
-      alt: "Contemporary Living Room",
-      title: "Contemporary Living Space",
-      description: "Open-concept design with bespoke furniture and lighting"
+      url: "/images/2.jpeg", 
+      alt: "Property Maintenance",
+      title: "Property Maintenance",
+      description: "Comprehensive maintenance services to keep your property in perfect condition"
     },
     {
-      url: "https://images.unsplash.com/photo-1600210492493-0946911123ea",
-      alt: "Luxury Bathroom",
-      title: "Spa-Like Bathroom",
-      description: "Luxurious bathroom renovation with high-end fixtures"
+      url: "/images/3.1.jpeg",
+      alt: "Renovation Project",
+      title: "Expert Renovations",
+      description: "Complete property renovations and transformations"
     },
     {
-      url: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
-      alt: "Outdoor Living",
-      title: "Outdoor Entertainment Area",
-      description: "Custom-designed outdoor space for year-round enjoyment"
+      url: "/images/4.jpeg",
+      alt: "Exterior & Interior Cleaning",
+      title: "Exterior & Interior Cleaning",
+      description: "Beautiful solutions for modern living"
+    },
+    {
+      url: "/images/5.jpeg",
+      alt: "Outdoor Maintenance",
+      title: "Outdoor Services",
+      description: "Professional outdoor cleaning and maintenance"
+    },
+    {
+      url: "/images/6.jpeg",
+      alt: "Premium Service",
+      title: "Quality Service",
+      description: "Premium property services with attention to detail"
     }
   ];
 
@@ -397,6 +409,10 @@ function App() {
                     src={image.url}
                     alt={image.alt}
                     className="w-full h-full object-cover"
+                    onError={(e) => {
+                      console.error(`Failed to load image: ${image.url}`);
+                      e.target.src = '/fallback-image.jpg'; // Add a fallback image
+                    }}
                   />
                   <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black to-transparent">
                     <h3 className="text-2xl font-bold text-white mb-2">{image.title}</h3>
