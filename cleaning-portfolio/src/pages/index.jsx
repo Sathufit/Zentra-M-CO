@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, Phone, Hammer, Paintbrush, Leaf, LayoutGrid, Brush, Sparkles, ChevronDown, CheckCircle, Code, Briefcase, Award, Quote, CalendarDays, CheckCircle2, Home, Building, MessageSquare, Star, ArrowRight, Play, Shield, Clock, Users, ChevronLeft, ChevronRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 function App() {
   const [formData, setFormData] = useState({
@@ -241,6 +242,27 @@ function App() {
     setCurrentSlide((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
+  // Add these animation variants
+  const fadeInUp = {
+    initial: { opacity: 0, y: 60 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6, ease: "easeOut" }
+  };
+
+  const staggerContainer = {
+    animate: {
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const slideIn = {
+    initial: { x: -60, opacity: 0 },
+    animate: { x: 0, opacity: 1 },
+    transition: { duration: 0.6, ease: "easeOut" }
+  };
+
   return (
     <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden">
       {/* Navigation Bar */}
@@ -401,22 +423,39 @@ function App() {
         <section className="py-20 bg-gray-900 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-black via-gray-900 to-black"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <motion.div
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              className="grid grid-cols-2 md:grid-cols-4 gap-8"
+            >
               {[
                 { number: '500+', label: 'Projects Completed', icon: Home },
                 { number: '98%', label: 'Client Satisfaction', icon: Star },
                 { number: '5+', label: 'Years Experience', icon: Award },
                 { number: '24/7', label: 'Support Available', icon: Shield }
               ].map((stat, index) => (
-                <div key={index} className="text-center group">
+                <motion.div
+                  key={index}
+                  variants={fadeInUp}
+                  className="text-center group"
+                >
                   <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-yellow-400/25">
                     <stat.icon className="text-black" size={24} />
                   </div>
-                  <div className="text-3xl md:text-4xl font-black text-yellow-400 mb-2">{stat.number}</div>
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="text-3xl md:text-4xl font-black text-yellow-400 mb-2"
+                  >
+                    {stat.number}
+                  </motion.div>
                   <div className="text-gray-300 font-medium">{stat.label}</div>
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -435,7 +474,13 @@ function App() {
               </p>
             </div>
 
-            <div className="relative aspect-[16/9] rounded-3xl overflow-hidden shadow-2xl border border-yellow-400/20">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
+              className="relative aspect-[16/9] rounded-3xl overflow-hidden shadow-2xl border border-yellow-400/20"
+            >
               {images.map((image, index) => (
                 <div
                   key={index}
@@ -485,7 +530,7 @@ function App() {
                   />
                 ))}
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -543,13 +588,23 @@ function App() {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div 
+              variants={staggerContainer}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
               {services.map((service, index) => {
                 const icons = [Brush, Sparkles, Paintbrush, Hammer, Leaf, LayoutGrid, Code];
                 const Icon = icons[index] || Briefcase;
                 
                 return (
-                  <div key={index} className="group relative">
+                  <motion.div
+                    key={index}
+                    variants={fadeInUp}
+                    className="group relative"
+                  >
                     <div className="relative bg-black p-8 rounded-3xl shadow-2xl border border-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300 group-hover:scale-105 group-hover:shadow-yellow-400/10 overflow-hidden h-full">
                       {/* Background Image Layer - Increased opacity */}
                       <div 
@@ -589,10 +644,10 @@ function App() {
                       {/* Top Border Gradient */}
                       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 z-20" />
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
-            </div>
+            </motion.div>
           </div>
         </section>
 
@@ -925,13 +980,23 @@ function App() {
           <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/30 to-black"></div>
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="flex flex-col items-center space-y-8">
-              <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 w-20 h-20 rounded-2xl flex items-center justify-center shadow-lg shadow-yellow-400/25">
+              <motion.div
+                animate={{ 
+                  y: [0, -20, 0],
+                }}
+                transition={{ 
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+                className="bg-gradient-to-br from-yellow-400 to-yellow-500 w-20 h-20 rounded-2xl flex items-center justify-center shadow-lg shadow-yellow-400/25"
+              >
                 <img 
                   src="https://img.icons8.com/color/96/000000/whatsapp--v1.png"
                   alt="WhatsApp"
                   className="w-14 h-14 hover:scale-110 transition-transform duration-300"
                 />
-              </div>
+              </motion.div>
               <h2 className="text-4xl md:text-5xl font-black">
                 <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
                   Let's Chat on WhatsApp
