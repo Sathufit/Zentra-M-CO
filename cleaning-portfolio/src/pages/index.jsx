@@ -160,8 +160,37 @@ function App() {
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const offset = 80;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      // Smooth scroll with custom duration and easing
+      const start = window.pageYOffset;
+      const distance = offsetPosition - start;
+      const duration = 2000; // Increased duration to 2 seconds
+      let startTime = null;
+
+      function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+
+        // Easing function for smoother animation
+        const ease = t => t < 0.5 
+          ? 4 * t * t * t 
+          : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+
+        window.scrollTo(0, start + (distance * ease(progress)));
+
+        if (timeElapsed < duration) {
+          requestAnimationFrame(animation);
+        }
+      }
+
+      requestAnimationFrame(animation);
       setIsMobileMenuOpen(false);
+    } else {
+      console.warn(`Section with id "${id}" not found`);
     }
   };
 
@@ -330,8 +359,9 @@ function App() {
                 From stunning renovations to meticulous maintenance - we create spaces that inspire.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                {/* Start Your Project Button - Updated to link to quote section */}
                 <button
-                  onClick={() => scrollToSection('inquiry')}
+                  onClick={() => scrollToSection('contact')}
                   className="group bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-10 py-4 rounded-full text-lg font-bold hover:shadow-2xl hover:shadow-yellow-400/25 hover:scale-105 transition-all duration-300 relative overflow-hidden"
                 >
                   <span className="relative z-10 flex items-center">
@@ -340,8 +370,16 @@ function App() {
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </button>
+
+                {/* View Our Work Button - Updated to link to gallery section */}
                 <button
-                  onClick={() => scrollToSection('projects')}
+                  onClick={() => {
+                    const gallerySection = document.getElementById('gallery');
+                    if (gallerySection) {
+                      gallerySection.scrollIntoView({ behavior: 'smooth' });
+                      setIsMobileMenuOpen(false);
+                    }
+                  }}
                   className="group flex items-center text-white hover:text-yellow-400 transition-colors duration-300"
                 >
                   <div className="bg-yellow-400/10 backdrop-blur-sm p-3 rounded-full mr-3 group-hover:bg-yellow-400/20 border border-yellow-400/30 transition-colors duration-300">
@@ -383,7 +421,7 @@ function App() {
         </section>
 
         {/* Our Gallery Section */}
-        <section className="py-20 bg-black text-white relative overflow-hidden">
+        <section id="gallery" className="py-20 bg-black text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/50 to-black"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
