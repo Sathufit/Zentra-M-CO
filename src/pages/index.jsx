@@ -269,8 +269,7 @@ function App() {
       <nav className={`fixed w-full z-50 transition-all duration-500 ${scrollY > 50 ? 'bg-black/95 backdrop-blur-lg shadow-2xl border-b border-yellow-400/20' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
+            <div className="flex items-center">              <div className="flex-shrink-0">
                 <img
                   src="images/logo2.png"
                   alt="Zentra M & CO Logo"
