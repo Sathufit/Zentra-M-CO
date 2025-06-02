@@ -217,7 +217,7 @@ function App() {
     {
       url: "/images/4.jpeg",
       alt: "Exterior & Interior Cleaning",
-      title: "Exterior & Interior Cleaning",
+      title: "Exterior & Int Cleaning",
       description: "Beautiful solutions for modern living"
     },
     {
