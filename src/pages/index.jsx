@@ -295,7 +295,7 @@ function App() {
                 </button>
               ))}
               <button
-                onClick={() => scrollToSection('inquiry')}
+                onClick={() => scrollToSection('contact')} // Changed from 'inquiry'
                 className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-6 py-3 rounded-full text-sm font-bold hover:shadow-2xl hover:shadow-yellow-400/25 hover:scale-105 transition-all duration-300 relative overflow-hidden group"
               >
                 <span className="relative z-10">Get Quote</span>
@@ -338,7 +338,7 @@ function App() {
               </button>
             ))}
             <button
-              onClick={() => scrollToSection('inquiry')}
+              onClick={() => scrollToSection('contact')} // Changed from 'inquiry'
               className="block w-full text-left bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-3 py-2 rounded-lg text-base font-bold mt-4"
             >
               Get Quote
@@ -1152,7 +1152,7 @@ function App() {
       <div className="p-4 border-t border-yellow-400/20">
         <button
           onClick={() => {
-            scrollToSection('inquiry');
+            scrollToSection('contact'); // Changed from 'inquiry'
             setIsMobileMenuOpen(false);
           }}
           className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-4 py-3 rounded-lg text-sm font-bold hover:shadow-lg hover:shadow-yellow-400/25 transition-all duration-300 flex items-center justify-center space-x-2"
@@ -1236,7 +1236,7 @@ function App() {
       <div className="space-y-4">
         <button
           onClick={() => {
-            scrollToSection('contact');
+            scrollToSection('contact'); // Changed from 'inquiry'
             setIsMobileMenuOpen(false);
           }}
           className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-6 py-4 rounded-xl 
