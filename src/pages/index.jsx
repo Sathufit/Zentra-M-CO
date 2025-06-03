@@ -1067,7 +1067,10 @@ function App() {
                 <ul className="space-y-2">
                   {services.slice(0, 4).map((service) => (
                     <li key={service}>
-                      <button className="text-gray-300 hover:text-yellow-400 transition-colors duration-300">
+                      <button
+                        className="text-gray-300 hover:text-yellow-400 transition-colors duration-300"
+                        onClick={() => scrollToSection('services')}
+                      >
                         {service}
                       </button>
                     </li>
