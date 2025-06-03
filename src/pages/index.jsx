@@ -1091,7 +1091,7 @@ function App() {
                   </div>
                   <div className="flex items-center text-gray-300">
                     <Building size={16} className="mr-3 text-yellow-400" />
-                    <span>123 Business Ave, City, State 12345</span>
+                    <span>Unit 2,9-13 elgin street sale , 3850</span>
                   </div>
                 </div>
               </div>
