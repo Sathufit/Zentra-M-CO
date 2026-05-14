@@ -346,165 +346,119 @@ function App() {
 
       <main className="pt-20">
         {/* Hero Section */}
-        <section id="hero" className="relative min-h-screen flex items-center overflow-hidden pt-20">
-          {/* === BACKGROUND LAYERS === */}
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #020b18 0%, #060f1e 40%, #0d1f3c 70%, #1B2A6B 100%)' }} />
-
-          {/* Diagonal orange accent bar */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute -right-40 top-0 h-full w-[55%]"
-              style={{ background: 'linear-gradient(160deg, transparent 30%, rgba(245,166,35,0.04) 60%, transparent 100%)' }} />
-            {/* Large orange circle glow — top right */}
-            <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full"
-              style={{ background: 'radial-gradient(circle, rgba(245,166,35,0.12) 0%, transparent 65%)' }} />
-            {/* Subtle bottom-left glow */}
-            <div className="absolute -bottom-48 -left-24 w-[400px] h-[400px] rounded-full"
-              style={{ background: 'radial-gradient(circle, rgba(27,42,107,0.6) 0%, transparent 70%)' }} />
-            {/* Thin diagonal rule */}
-            <div className="absolute top-0 right-[42%] w-px h-full opacity-10"
-              style={{ background: 'linear-gradient(to bottom, transparent, #F5A623, transparent)' }} />
+        <section id="hero" className="relative min-h-screen flex flex-col justify-between overflow-hidden">
+          {/* === FULL-BLEED BACKGROUND PHOTO === */}
+          <div className="absolute inset-0">
+            <img
+              src="/images/3.1.jpeg"
+              alt="Zentra M & CO - Property Renovation"
+              className="w-full h-full object-cover object-center"
+            />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(2,11,24,0.97) 0%, rgba(6,15,30,0.88) 45%, rgba(13,31,60,0.55) 100%)' }} />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(2,11,24,1) 0%, transparent 40%)' }} />
           </div>
 
-          {/* Dot-grid texture */}
-          <div className="absolute inset-0 opacity-[0.035]"
-            style={{
-              backgroundImage: `radial-gradient(circle, #F5A623 1px, transparent 1px)`,
-              backgroundSize: '36px 36px'
-            }} />
+          {/* Orange left-edge accent line */}
+          <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-orange-400 to-transparent opacity-60" />
 
-          {/* === CONTENT: TWO-COLUMN SPLIT === */}
-          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-16 lg:py-24 flex items-center">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 w-full items-center">
+          {/* === MAIN CONTENT === */}
+          <div className="relative z-10 flex-1 flex items-center">
+            <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 py-20">
 
-              {/* LEFT — Headline + CTA */}
-              <div className="order-2 lg:order-1">
-                {/* Eyebrow */}
-                <div className="inline-flex items-center gap-2.5 bg-orange-400/10 border border-orange-400/25 rounded-full px-5 py-2 mb-8">
-                  <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
-                  <span className="text-orange-400 text-xs font-bold tracking-[0.18em] uppercase">Sale, Victoria — Est. 2019</span>
-                </div>
-
-                {/* Main headline */}
-                <h1 className="font-black leading-[0.95] tracking-tighter mb-6">
-                  <span className="block text-white text-6xl md:text-7xl lg:text-8xl">Zentra</span>
-                  <span className="block text-6xl md:text-7xl lg:text-8xl"
-                    style={{ WebkitTextStroke: '2px #F5A623', color: 'transparent' }}>
-                    M &amp; CO
-                  </span>
-                  <span className="block text-2xl md:text-3xl font-semibold text-gray-300 mt-4 tracking-normal leading-snug">
-                    Property Renovation &amp;<br />Maintenance Specialists
-                  </span>
-                </h1>
-
-                {/* Divider */}
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="h-px flex-1 max-w-[60px] bg-orange-400/50" />
-                  <p className="text-xs text-gray-500 tracking-[0.2em] uppercase">Residential · Commercial · Industrial</p>
-                </div>
-
-                <p className="text-gray-400 text-lg leading-relaxed mb-10 max-w-lg">
-                  From precision cleaning and pressure washing to full-scale renovations — we deliver results that speak for themselves across Sale and regional Victoria.
-                </p>
-
-                {/* CTA Row */}
-                <div className="flex flex-wrap gap-4 items-center">
-                  <button
-                    onClick={() => scrollToSection('contact')}
-                    className="group relative overflow-hidden bg-orange-400 text-black px-8 py-4 rounded-xl text-base font-bold hover:shadow-2xl hover:shadow-orange-400/30 hover:scale-105 transition-all duration-300"
-                  >
-                    <span className="relative z-10 flex items-center gap-2">
-                      Get a Free Quote
-                      <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={18} />
-                    </span>
-                    <div className="absolute inset-0 bg-orange-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </button>
-
-                  <button
-                    onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="group flex items-center gap-3 text-gray-300 hover:text-white transition-colors duration-300"
-                  >
-                    <div className="w-12 h-12 rounded-xl border border-orange-400/30 bg-orange-400/5 flex items-center justify-center group-hover:bg-orange-400/15 group-hover:border-orange-400/50 transition-all duration-300">
-                      <Play size={18} className="text-orange-400 ml-0.5" />
-                    </div>
-                    <span className="font-medium">View Our Work</span>
-                  </button>
-                </div>
-
-                {/* Trust strip */}
-                <div className="flex flex-wrap gap-6 mt-10 pt-10 border-t border-white/5">
-                  {[
-                    { icon: Shield, label: 'Fully Insured' },
-                    { icon: Star, label: '5-Star Rated' },
-                    { icon: Award, label: 'Licensed & Certified' },
-                  ].map(({ icon: Icon, label }) => (
-                    <div key={label} className="flex items-center gap-2 text-sm text-gray-400">
-                      <Icon size={15} className="text-orange-400" />
-                      <span>{label}</span>
-                    </div>
-                  ))}
-                </div>
+              {/* Eyebrow */}
+              <div className="flex items-center gap-3 mb-8">
+                <div className="h-px w-10 bg-orange-400" />
+                <span className="text-orange-400 text-xs font-bold tracking-[0.25em] uppercase">Sale, Victoria — Est. 2019</span>
               </div>
 
-              {/* RIGHT — Visual card stack */}
-              <div className="order-1 lg:order-2 flex justify-center lg:justify-end pr-0 lg:pr-4">
-                <div className="relative w-full max-w-xs">
+              {/* HEADLINE */}
+              <h1 className="font-black tracking-tight leading-none mb-8 max-w-4xl">
+                <span className="block text-white" style={{ fontSize: 'clamp(3rem, 9vw, 7rem)', lineHeight: 1 }}>
+                  Transform Your
+                </span>
+                <span className="block text-orange-400" style={{ fontSize: 'clamp(3rem, 9vw, 7rem)', lineHeight: 1 }}>
+                  Property.
+                </span>
+                <span className="block text-white/40 mt-3" style={{ fontSize: 'clamp(1.2rem, 3vw, 2.2rem)', fontWeight: 600, letterSpacing: '0.02em', lineHeight: 1.3 }}>
+                  Renovation &amp; Maintenance Specialists<br />across Sale &amp; Regional Victoria
+                </span>
+              </h1>
 
-                  {/* Main brand card */}
-                  <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60"
-                    style={{ background: 'linear-gradient(145deg, #0d1f3c, #1B2A6B)' }}>
-                    {/* Orange top bar */}
-                    <div className="h-1.5 w-full bg-gradient-to-r from-orange-500 via-orange-400 to-orange-300" />
-                    <div className="p-8">
-                      <img
-                        src="/images/logonew.jpeg"
-                        alt="Zentra M & CO"
-                        className="w-28 h-28 rounded-2xl object-contain mx-auto mb-6 shadow-xl shadow-black/40"
-                      />
-                      <h2 className="text-center text-white font-black text-2xl mb-1">Zentra M &amp; CO</h2>
-                      <p className="text-center text-orange-400/80 text-sm font-medium mb-6">Property Renovation &amp; Maintenance</p>
+              <p className="text-gray-400 text-lg leading-relaxed mb-10 max-w-xl">
+                From deep cleaning and pressure washing to full-scale renovations — residential, commercial and industrial — we get it done right, on time, every time.
+              </p>
 
-                      {/* Divider */}
-                      <div className="border-t border-white/10 mb-4" />
+              {/* CTAs */}
+              <div className="flex flex-wrap gap-4 items-center mb-14">
+                <button
+                  onClick={() => scrollToSection('contact')}
+                  className="group relative overflow-hidden bg-orange-400 text-black px-9 py-4 rounded-xl text-base font-bold shadow-2xl shadow-orange-400/20 hover:shadow-orange-400/40 hover:scale-105 transition-all duration-300"
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    Get a Free Quote
+                    <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={18} />
+                  </span>
+                  <div className="absolute inset-0 bg-orange-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </button>
 
-                      {/* Available Now strip */}
-                      <div className="flex items-center gap-3 bg-white/5 rounded-2xl px-4 py-3 border border-white/10">
-                        <span className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
-                        <div>
-                          <p className="text-white text-xs font-bold leading-tight">Available Now</p>
-                          <p className="text-gray-400 text-xs">Free quotes · No obligation</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Floating badge — Victoria wide */}
-                  <div className="absolute -top-4 right-4 bg-orange-400 rounded-2xl px-4 py-3 shadow-xl shadow-orange-400/30">
-                    <p className="text-black text-xs font-black leading-tight">Victoria</p>
-                    <p className="text-black/70 text-xs">Wide Service</p>
-                  </div>
-
-                  {/* Decorative dots */}
-                  <div className="absolute -bottom-10 -right-10 w-28 h-28 opacity-20"
-                    style={{
-                      backgroundImage: `radial-gradient(circle, #F5A623 1.5px, transparent 1.5px)`,
-                      backgroundSize: '10px 10px'
-                    }} />
-                </div>
+                <button
+                  onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="group flex items-center gap-3 border border-white/20 hover:border-orange-400/50 text-white px-7 py-4 rounded-xl text-base font-semibold hover:bg-white/5 transition-all duration-300"
+                >
+                  <Play size={16} className="text-orange-400" />
+                  View Our Work
+                </button>
               </div>
 
+              {/* Trust badges */}
+              <div className="flex flex-wrap gap-3">
+                {[
+                  { icon: Shield, label: 'Fully Insured' },
+                  { icon: Star, label: '5-Star Rated' },
+                  { icon: Award, label: 'Licensed & Certified' },
+                  { icon: Phone, label: '24/7 Support' },
+                ].map(({ icon: Icon, label }) => (
+                  <div key={label} className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 text-sm text-gray-300">
+                    <Icon size={13} className="text-orange-400" />
+                    {label}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Scroll Indicator */}
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <ChevronDown className="text-orange-400/60" size={28} />
+          {/* === BOTTOM SERVICE BAR === */}
+          <div className="relative z-10 border-t border-white/10"
+            style={{ background: 'rgba(6,15,30,0.85)', backdropFilter: 'blur(12px)' }}>
+            <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20">
+              <div className="grid grid-cols-3 md:grid-cols-6 divide-x divide-white/10">
+                {[
+                  { icon: Sparkles, label: 'Premium Cleaning' },
+                  { icon: Brush, label: 'Pressure Washing' },
+                  { icon: Paintbrush, label: 'Painting' },
+                  { icon: Hammer, label: 'Maintenance' },
+                  { icon: Leaf, label: 'Flooring & Decking' },
+                  { icon: Code, label: 'Web Design' },
+                ].map(({ icon: Icon, label }) => (
+                  <button
+                    key={label}
+                    onClick={() => scrollToSection('services')}
+                    className="group flex flex-col items-center gap-2 py-5 px-3 hover:bg-orange-400/5 transition-colors duration-300"
+                  >
+                    <Icon size={18} className="text-orange-400 group-hover:scale-110 transition-transform duration-300" />
+                    <span className="text-gray-400 group-hover:text-white text-xs font-medium text-center transition-colors duration-300 leading-tight">{label}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
 
-          {/* Bottom fade */}
-          <div className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
-            style={{ background: 'linear-gradient(to bottom, transparent, #060f1e)' }} />
+          {/* Scroll indicator */}
+          <div className="absolute bottom-24 right-8 hidden lg:flex flex-col items-center gap-1">
+            <span className="text-gray-500 text-xs tracking-widest uppercase" style={{writingMode:'vertical-rl'}}>Scroll</span>
+            <ChevronDown className="text-orange-400/50 animate-bounce" size={18} />
+          </div>
         </section>
-
         {/* Services Section */}
         <section id="services" className="py-20 bg-navy-900 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-navy-900 via-navy-950 to-navy-900"></div>
