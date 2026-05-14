@@ -346,7 +346,7 @@ function App() {
 
       <main className="pt-20">
         {/* Hero Section */}
-        <section id="hero" className="relative min-h-screen flex flex-col justify-between overflow-hidden">
+        <section id="hero" className="relative overflow-hidden min-h-[100svh] flex flex-col justify-center">
           {/* === FULL-BLEED BACKGROUND PHOTO === */}
           <div className="absolute inset-0">
             <img
@@ -354,84 +354,86 @@ function App() {
               alt="Zentra M & CO - Property Renovation"
               className="w-full h-full object-cover object-center"
             />
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(2,11,24,0.97) 0%, rgba(6,15,30,0.88) 45%, rgba(13,31,60,0.55) 100%)' }} />
-            <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(2,11,24,1) 0%, transparent 40%)' }} />
+            {/* Mobile: slightly transparent dark overlay */}
+            <div className="absolute inset-0 lg:hidden" style={{ background: 'rgba(2,11,24,0.85)' }} />
+            {/* Desktop: side fade so right side reveals photo */}
+            <div className="absolute inset-0 hidden lg:block" style={{ background: 'linear-gradient(to right, rgba(2,11,24,0.97) 0%, rgba(6,15,30,0.88) 45%, rgba(13,31,60,0.30) 100%)' }} />
+            <div className="absolute inset-0 hidden lg:block" style={{ background: 'linear-gradient(to top, rgba(2,11,24,1) 0%, transparent 30%)' }} />
           </div>
 
           {/* Orange left-edge accent line */}
-          <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-transparent via-orange-400 to-transparent opacity-60" />
+          <div className="absolute left-0 top-0 bottom-0 w-1 sm:w-1.5 bg-gradient-to-b from-transparent via-orange-400 to-transparent opacity-70" />
 
           {/* === MAIN CONTENT === */}
-          <div className="relative z-10 flex-1 flex items-center">
-            <div className="w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-20 py-20">
+          {/* Added pb-32 on mobile to prevent overlapping with the absolute bottom service bar */}
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-5 sm:px-10 lg:px-20 -mt-10 lg:-mt-0 pb-32 sm:pb-36 lg:pb-0">
 
-              {/* Eyebrow */}
-              <div className="flex items-center gap-3 mb-8">
-                <div className="h-px w-10 bg-orange-400" />
-                <span className="text-orange-400 text-xs font-bold tracking-[0.25em] uppercase">Sale, Victoria — Est. 2019</span>
-              </div>
+            {/* Eyebrow */}
+            <div className="flex items-center gap-3 mb-4 sm:mb-6 lg:mb-8">
+              <div className="h-px w-8 sm:w-12 bg-orange-400" />
+              <span className="text-orange-400 text-[10px] sm:text-xs font-bold tracking-[0.25em] uppercase">Sale, Victoria — Est. 2019</span>
+            </div>
 
-              {/* HEADLINE */}
-              <h1 className="font-black tracking-tight leading-none mb-8 max-w-4xl">
-                <span className="block text-white" style={{ fontSize: 'clamp(3rem, 9vw, 7rem)', lineHeight: 1 }}>
-                  Transform Your
+            {/* HEADLINE */}
+            <h1 className="font-black tracking-tight leading-none mb-4 sm:mb-6 lg:mb-8 max-w-4xl">
+              <span className="block text-white" style={{ fontSize: 'clamp(2.4rem, 10vw, 6.5rem)', lineHeight: 1.05 }}>
+                Transform Your
+              </span>
+              <span className="block text-orange-400" style={{ fontSize: 'clamp(2.4rem, 10vw, 6.5rem)', lineHeight: 1.05 }}>
+                Property.
+              </span>
+              <span className="block text-gray-300 mt-3 sm:mt-4" style={{ fontSize: 'clamp(0.95rem, 3.8vw, 1.8rem)', fontWeight: 500, letterSpacing: '0.01em', lineHeight: 1.4 }}>
+                Renovation &amp; Maintenance Specialists across Sale &amp; Regional&nbsp;Victoria.
+              </span>
+            </h1>
+
+            <p className="text-gray-400 text-sm sm:text-base lg:text-lg leading-relaxed mb-8 max-w-xl">
+              From deep cleaning and pressure washing to full-scale renovations — residential, commercial and industrial — we get it done right, on time, every time.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-4 items-center mb-8">
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="group relative overflow-hidden bg-orange-400 text-black px-7 sm:px-9 py-3.5 sm:py-4 rounded-xl text-sm sm:text-base font-bold shadow-xl shadow-orange-400/20 hover:shadow-orange-400/40 hover:scale-[1.02] transition-all duration-300"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  Get a Free Quote
+                  <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={16} />
                 </span>
-                <span className="block text-orange-400" style={{ fontSize: 'clamp(3rem, 9vw, 7rem)', lineHeight: 1 }}>
-                  Property.
-                </span>
-                <span className="block text-white/40 mt-3" style={{ fontSize: 'clamp(1.2rem, 3vw, 2.2rem)', fontWeight: 600, letterSpacing: '0.02em', lineHeight: 1.3 }}>
-                  Renovation &amp; Maintenance Specialists<br />across Sale &amp; Regional Victoria
-                </span>
-              </h1>
+                <div className="absolute inset-0 bg-orange-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </button>
 
-              <p className="text-gray-400 text-lg leading-relaxed mb-10 max-w-xl">
-                From deep cleaning and pressure washing to full-scale renovations — residential, commercial and industrial — we get it done right, on time, every time.
-              </p>
+              <button
+                onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
+                className="group flex items-center gap-2 border border-white/20 hover:border-orange-400/60 text-white px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl text-sm sm:text-base font-semibold hover:bg-white/5 transition-all duration-300"
+              >
+                <Play size={15} className="text-orange-400" />
+                View Our Work
+              </button>
+            </div>
 
-              {/* CTAs */}
-              <div className="flex flex-wrap gap-4 items-center mb-14">
-                <button
-                  onClick={() => scrollToSection('contact')}
-                  className="group relative overflow-hidden bg-orange-400 text-black px-9 py-4 rounded-xl text-base font-bold shadow-2xl shadow-orange-400/20 hover:shadow-orange-400/40 hover:scale-105 transition-all duration-300"
-                >
-                  <span className="relative z-10 flex items-center gap-2">
-                    Get a Free Quote
-                    <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={18} />
-                  </span>
-                  <div className="absolute inset-0 bg-orange-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </button>
-
-                <button
-                  onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="group flex items-center gap-3 border border-white/20 hover:border-orange-400/50 text-white px-7 py-4 rounded-xl text-base font-semibold hover:bg-white/5 transition-all duration-300"
-                >
-                  <Play size={16} className="text-orange-400" />
-                  View Our Work
-                </button>
-              </div>
-
-              {/* Trust badges */}
-              <div className="flex flex-wrap gap-3">
-                {[
-                  { icon: Shield, label: 'Fully Insured' },
-                  { icon: Star, label: '5-Star Rated' },
-                  { icon: Award, label: 'Licensed & Certified' },
-                  { icon: Phone, label: '24/7 Support' },
-                ].map(({ icon: Icon, label }) => (
-                  <div key={label} className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 text-sm text-gray-300">
-                    <Icon size={13} className="text-orange-400" />
-                    {label}
-                  </div>
-                ))}
-              </div>
+            {/* Trust badges */}
+            <div className="flex flex-wrap gap-2.5">
+              {[
+                { icon: Shield, label: 'Fully Insured' },
+                { icon: Star, label: '5-Star Rated' },
+                { icon: Award, label: 'Licensed & Certified' },
+                { icon: Phone, label: '24/7 Support' },
+              ].map(({ icon: Icon, label }) => (
+                <div key={label} className="flex items-center gap-1.5 bg-white/5 border border-white/10 rounded-full px-3.5 py-1.5 text-xs sm:text-sm text-gray-300">
+                  <Icon size={12} className="text-orange-400 shrink-0" />
+                  {label}
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* === BOTTOM SERVICE BAR === */}
-          <div className="relative z-10 border-t border-white/10"
-            style={{ background: 'rgba(6,15,30,0.85)', backdropFilter: 'blur(12px)' }}>
-            <div className="max-w-7xl mx-auto px-6 sm:px-10 lg:px-20">
-              <div className="grid grid-cols-3 md:grid-cols-6 divide-x divide-white/10">
+          {/* === SERVICE BAR === pinned absolutely to the bottom on all screen sizes */}
+          <div className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/10 pb-4 sm:pb-0"
+            style={{ background: 'rgba(4,12,26,0.85)', backdropFilter: 'blur(12px)' }}>
+            <div className="max-w-7xl mx-auto">
+              <div className="grid grid-cols-3 md:grid-cols-6 divide-x divide-white/10 divide-y md:divide-y-0 divide-white/10">
                 {[
                   { icon: Sparkles, label: 'Premium Cleaning' },
                   { icon: Brush, label: 'Pressure Washing' },
@@ -443,18 +445,18 @@ function App() {
                   <button
                     key={label}
                     onClick={() => scrollToSection('services')}
-                    className="group flex flex-col items-center gap-2 py-5 px-3 hover:bg-orange-400/5 transition-colors duration-300"
+                    className="group flex flex-col items-center justify-center gap-1.5 py-3 sm:py-4 hover:bg-orange-400/10 transition-colors duration-300"
                   >
-                    <Icon size={18} className="text-orange-400 group-hover:scale-110 transition-transform duration-300" />
-                    <span className="text-gray-400 group-hover:text-white text-xs font-medium text-center transition-colors duration-300 leading-tight">{label}</span>
+                    <Icon size={16} className="text-orange-400 group-hover:scale-110 transition-transform duration-300 shrink-0" />
+                    <span className="text-gray-300 group-hover:text-white text-[10px] sm:text-xs font-medium text-center transition-colors duration-300">{label}</span>
                   </button>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Scroll indicator */}
-          <div className="absolute bottom-24 right-8 hidden lg:flex flex-col items-center gap-1">
+          {/* Scroll indicator — desktop only */}
+          <div className="absolute bottom-24 right-8 hidden lg:flex flex-col items-center gap-1 z-20">
             <span className="text-gray-500 text-xs tracking-widest uppercase" style={{writingMode:'vertical-rl'}}>Scroll</span>
             <ChevronDown className="text-orange-400/50 animate-bounce" size={18} />
           </div>
@@ -463,11 +465,11 @@ function App() {
         <section id="services" className="py-20 bg-navy-900 relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-navy-900 via-navy-950 to-navy-900"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
+            <div className="text-center mb-12 sm:mb-16">
               <div className="inline-flex items-center gap-2 bg-orange-400/10 border border-orange-400/25 rounded-full px-5 py-2 mb-5">
                 <span className="text-orange-400 text-xs font-bold tracking-[0.18em] uppercase">What We Do</span>
               </div>
-              <h2 className="text-5xl md:text-6xl font-black mb-6">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-black mb-6">
                 <span className="text-white">Our </span>
                 <span className="bg-gradient-to-r from-orange-400 to-orange-300 bg-clip-text text-transparent">Services</span>
               </h2>
@@ -481,7 +483,7 @@ function App() {
               initial="initial"
               whileInView="animate"
               viewport={{ once: true }}
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8"
             >
               {services.map((service, index) => {
                 const icons = [Brush, Sparkles, Paintbrush, Hammer, Leaf, LayoutGrid, Code];
@@ -493,7 +495,7 @@ function App() {
                     variants={fadeInUp}
                     className="group relative"
                   >
-                    <div className="relative bg-navy-900 p-8 rounded-3xl shadow-2xl border border-orange-400/20 hover:border-orange-400/50 transition-all duration-300 group-hover:scale-105 group-hover:shadow-orange-400/10 overflow-hidden h-full">
+                    <div className="relative bg-navy-900 p-5 sm:p-8 rounded-3xl shadow-2xl border border-orange-400/20 hover:border-orange-400/50 transition-all duration-300 group-hover:scale-105 group-hover:shadow-orange-400/10 overflow-hidden h-full">
                       {/* Background Image Layer - Increased opacity */}
                       <div 
                         className="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-50 transition-opacity duration-300"
@@ -539,8 +541,8 @@ function App() {
         <section id="gallery" className="py-20 bg-navy-950 text-white relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900/50 to-navy-950"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-black mb-6">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-black mb-6">
                 <span className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
                   Our Gallery
                 </span>
@@ -614,8 +616,8 @@ function App() {
         <section className="py-20 bg-navy-950 text-white relative overflow-hidden border-t border-orange-400/20">
           <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900/50 to-navy-950"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-black mb-6">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-black mb-6">
                 <span className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
                   Our Process
                 </span>
@@ -625,7 +627,7 @@ function App() {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8">
               {[
                 { icon: CalendarDays, title: 'Consultation', desc: 'Free consultation to understand your vision and requirements' },
                 { icon: CheckCircle2, title: 'Planning', desc: 'Detailed project planning with timeline and transparent pricing' },
@@ -633,7 +635,7 @@ function App() {
                 { icon: Sparkles, title: 'Completion', desc: 'Final walkthrough and handover of your transformed space' }
               ].map((step, index) => (
                 <div key={index} className="relative group">
-                  <div className="bg-gradient-to-br from-navy-900 to-navy-950 p-8 rounded-3xl border border-orange-400/20 hover:border-orange-400/40 transition-all duration-300 group-hover:scale-105 shadow-xl">
+                  <div className="bg-gradient-to-br from-navy-900 to-navy-950 p-5 sm:p-8 rounded-3xl border border-orange-400/20 hover:border-orange-400/40 transition-all duration-300 group-hover:scale-105 shadow-xl">
                     <div className="bg-gradient-to-br from-orange-400 to-orange-500 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300 shadow-lg shadow-orange-400/25">
                       <step.icon className="text-black" size={24} />
                     </div>
@@ -653,8 +655,8 @@ function App() {
         <section className="py-20 relative overflow-hidden border-t border-orange-400/20" style={{ background: 'linear-gradient(135deg, #0a1628 0%, #1B2A6B 50%, #0a1628 100%)' }}>
           <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(245,166,35,0.08) 0%, transparent 60%)' }}></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-black mb-6 text-white">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-black mb-6 text-white">
                 Client Stories
               </h2>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto">
@@ -663,7 +665,7 @@ function App() {
             </div>
             
             <div className="relative max-w-4xl mx-auto">
-              <div className="bg-navy-900/80 backdrop-blur-lg rounded-3xl p-8 md:p-12 border border-orange-400/30 shadow-2xl">
+              <div className="bg-navy-900/80 backdrop-blur-lg rounded-3xl p-6 sm:p-8 md:p-12 border border-orange-400/30 shadow-2xl">
                 <div className="text-center">
                   <div className="flex justify-center mb-6">
                     {[...Array(5)].map((_, i) => (
@@ -671,7 +673,7 @@ function App() {
                     ))}
                   </div>
                   <Quote className="text-orange-400/50 mx-auto mb-6" size={48} />
-                  <p className="text-xl md:text-2xl font-light mb-8 leading-relaxed text-gray-100">
+                  <p className="text-base sm:text-xl md:text-2xl font-light mb-8 leading-relaxed text-gray-100">
                     "{testimonials[activeTestimonial].text}"
                   </p>
                   <div className="flex items-center justify-center">
@@ -703,7 +705,7 @@ function App() {
         <section id="about" className="py-20 bg-navy-950 text-white relative overflow-hidden border-t border-orange-400/20">
           <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900/30 to-navy-950"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               <div>
                 <h2 className="text-3xl md:text-5xl font-black mb-8">
                   <span className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
@@ -736,14 +738,14 @@ function App() {
                 </div>
               </div>
               
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-2 gap-4 sm:gap-6">
                 {[
                   { icon: Shield, title: 'Fully Insured', desc: 'Complete protection for your peace of mind' },
                   { icon: Clock, title: 'On Schedule', desc: 'Reliable timelines you can count on' },
                   { icon: Users, title: 'Expert Team', desc: 'Skilled professionals with years of experience' },
                   { icon: Award, title: 'Quality Guaranteed', desc: 'Premium results backed by our guarantee' }
                 ].map((feature, index) => (
-                  <div key={index} className="bg-navy-800 p-6 rounded-2xl border border-orange-400/20 hover:border-orange-400/40 transition-all duration-300 group hover:scale-105 shadow-xl">
+                  <div key={index} className="bg-navy-800 p-4 sm:p-6 rounded-2xl border border-orange-400/20 hover:border-orange-400/40 transition-all duration-300 group hover:scale-105 shadow-xl">
                     <feature.icon className="text-orange-400 mb-4 group-hover:text-orange-300 transition-colors duration-300" size={32} />
                     <h3 className="font-bold text-white mb-2">{feature.title}</h3>
                     <p className="text-gray-300 text-sm">{feature.desc}</p>
@@ -758,8 +760,8 @@ function App() {
         <section className="py-20 bg-navy-950 text-white relative overflow-hidden border-t border-orange-400/20">
           <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900/30 to-navy-950"></div>
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-black mb-6">
+            <div className="text-center mb-12 sm:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-black mb-6">
                 <span className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
                   Frequently Asked
                 </span>
@@ -774,9 +776,9 @@ function App() {
                 <div key={index} className="bg-navy-800 rounded-2xl border border-orange-400/20 hover:border-orange-400/40 transition-all duration-300 overflow-hidden">
                   <button
                     onClick={() => toggleFaq(index)}
-                    className="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-navy-800/50 transition-colors duration-300"
+                    className="w-full px-5 sm:px-8 py-4 sm:py-6 text-left flex justify-between items-center gap-4 hover:bg-navy-800/50 transition-colors duration-300"
                   >
-                    <span className="text-lg font-semibold text-white">{faq.question}</span>
+                    <span className="text-sm sm:text-base lg:text-lg font-semibold text-white">{faq.question}</span>
                     <ChevronDown 
                       className={`text-orange-400 transition-transform duration-300 ${
                         openFaq === index ? 'rotate-180' : ''
@@ -784,7 +786,7 @@ function App() {
                       size={24} 
                     />
                   </button>
-                  <div className={`px-8 transition-all duration-300 ${
+                  <div className={`px-5 sm:px-8 transition-all duration-300 ${
                     openFaq === index ? 'pb-6 opacity-100' : 'pb-0 opacity-0 max-h-0 overflow-hidden'
                   }`}>
                     <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
@@ -799,9 +801,9 @@ function App() {
         <section id="contact" className="py-20 relative overflow-hidden border-t border-orange-400/20" style={{ background: 'linear-gradient(135deg, #060f1e 0%, #0d1f3c 100%)' }}>
           <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 30% 60%, rgba(245,166,35,0.07) 0%, transparent 55%)' }}></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               <div>
-                <h2 className="text-5xl md:text-6xl font-black mb-8 text-white">
+                <h2 className="text-3xl sm:text-4xl md:text-6xl font-black mb-6 sm:mb-8 text-white">
                   Get In Touch
                 </h2>
                 <p className="text-xl text-gray-300 mb-8 leading-relaxed">
@@ -841,7 +843,7 @@ function App() {
                 </div>
               </div>
               
-              <div className="bg-navy-900/60 backdrop-blur-lg p-8 rounded-3xl border border-orange-400/30 shadow-2xl">
+              <div className="bg-navy-900/60 backdrop-blur-lg p-5 sm:p-8 rounded-3xl border border-orange-400/30 shadow-2xl">
                 <h3 className="text-2xl font-bold text-orange-400 mb-6">Request a Quote</h3>
                 
                 {showSuccessMessage && (
@@ -994,7 +996,7 @@ function App() {
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                 </svg>
               </motion.div>
-              <h2 className="text-4xl md:text-5xl font-black">
+              <h2 className="text-2xl sm:text-4xl md:text-5xl font-black">
                 <span className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
                   Let's Chat on WhatsApp
                 </span>
@@ -1076,8 +1078,8 @@ function App() {
                     <Mail size={16} className="mr-3 text-orange-400" />
                     <span>Info@zentram.com.au</span>
                   </div>
-                  <div className="flex items-center text-gray-300">
-                    <Building size={16} className="mr-3 text-orange-400" />
+                  <div className="flex items-start text-gray-300">
+                    <Building size={16} className="mr-3 mt-0.5 shrink-0 text-orange-400" />
                     <span>Unit 2, 9-13 Elgin Street, Sale VIC 3850</span>
                   </div>
                 </div>
@@ -1094,6 +1096,20 @@ function App() {
           </div>
         </footer>
         </main>
+
+{/* Floating WhatsApp Button */}
+<a
+  href="https://wa.me/+61414463184?text=Hello!%20I'm%20interested%20in%20your%20services."
+  target="_blank"
+  rel="noopener noreferrer"
+  className="fixed bottom-6 right-5 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-2xl shadow-green-500/30 hover:scale-110 transition-transform duration-300"
+  style={{ background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)' }}
+  aria-label="Chat on WhatsApp"
+>
+  <svg className="w-7 h-7" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
 
 {/* Mobile Menu Overlay */}
 <div 
