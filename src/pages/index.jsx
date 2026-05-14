@@ -264,21 +264,19 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-navy-950 text-white font-sans overflow-x-hidden">
       {/* Navigation Bar */}
-      <nav className={`fixed w-full z-50 transition-all duration-500 ${scrollY > 50 ? 'bg-black/95 backdrop-blur-lg shadow-2xl border-b border-yellow-400/20' : 'bg-transparent'}`}>
+      <nav className={`fixed w-full z-50 transition-all duration-500 ${scrollY > 50 ? 'bg-navy-900/95 backdrop-blur-lg shadow-2xl border-b border-orange-400/20' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20">
             <div className="flex items-center">              <div className="flex-shrink-0">
-                <img
-                  src="images/logo2.png"
-                  alt="Zentra M & CO Logo"
-                  className="h-30 md:h-42 w-auto object-contain hover:scale-105 transition-transform duration-300"
-                  style={{
-                    maxWidth: '300px',
-                    minWidth: '240px'
-                  }}
-                />
+                <div className="flex items-center gap-2 bg-navy-900/80 border border-orange-400/20 rounded-xl px-3 py-2">
+                  <img
+                    src="/images/logonew.jpeg"
+                    alt="Zentra M & CO Logo"
+                    className="h-9 w-auto object-contain"
+                  />
+                </div>
               </div>
             </div>
             <div className="hidden md:flex md:items-center md:space-x-8">
@@ -288,24 +286,24 @@ function App() {
                   onClick={() => scrollToSection(item.toLowerCase() === 'home' ? 'hero' : 
                                                item.toLowerCase() === 'projects' ? 'gallery' : 
                                                item.toLowerCase())}
-                  className="relative text-gray-300 hover:text-yellow-400 px-3 py-2 text-sm font-semibold transition-all duration-300 group"
+                  className="relative text-gray-300 hover:text-orange-400 px-3 py-2 text-sm font-semibold transition-all duration-300 group"
                 >
                   {item}
-                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-yellow-400 to-yellow-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-orange-400 to-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
                 </button>
               ))}
               <button
                 onClick={() => scrollToSection('contact')} // Changed from 'inquiry'
-                className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-6 py-3 rounded-full text-sm font-bold hover:shadow-2xl hover:shadow-yellow-400/25 hover:scale-105 transition-all duration-300 relative overflow-hidden group"
+                className="bg-gradient-to-r from-orange-400 to-orange-500 text-black px-6 py-3 rounded-full text-sm font-bold hover:shadow-2xl hover:shadow-orange-400/25 hover:scale-105 transition-all duration-300 relative overflow-hidden group"
               >
                 <span className="relative z-10">Get Quote</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-300 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
             </div>
             <div className="-mr-2 flex md:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-yellow-400 focus:outline-none"
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-orange-400 focus:outline-none"
                 aria-expanded="false"
               >
                 <div className="w-6 h-6 relative">
@@ -326,20 +324,20 @@ function App() {
       </nav>
 
         {/* Mobile menu */}
-        <div className={`md:hidden transition-all duration-300 ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden bg-black/95 backdrop-blur-lg border-t border-yellow-400/20`}>
+        <div className={`md:hidden transition-all duration-300 ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden bg-black/95 backdrop-blur-lg border-t border-orange-400/20`}>
           <div className="px-4 pt-2 pb-4 space-y-2">
             {['Home', 'About', 'Services', 'Projects', 'Contact'].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase() === 'home' ? 'hero' : item.toLowerCase())}
-                className="block w-full text-left px-3 py-2 text-base font-medium text-gray-300 hover:text-yellow-400 transition-colors duration-300"
+                className="block w-full text-left px-3 py-2 text-base font-medium text-gray-300 hover:text-orange-400 transition-colors duration-300"
               >
                 {item}
               </button>
             ))}
             <button
               onClick={() => scrollToSection('contact')} // Changed from 'inquiry'
-              className="block w-full text-left bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-3 py-2 rounded-lg text-base font-bold mt-4"
+              className="block w-full text-left bg-gradient-to-r from-orange-400 to-orange-500 text-black px-3 py-2 rounded-lg text-base font-bold mt-4"
             >
               Get Quote
             </button>
@@ -348,99 +346,176 @@ function App() {
 
       <main className="pt-20">
         {/* Hero Section */}
-        <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-          {/* Animated Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black">
-            <div 
-              className="absolute inset-0 opacity-20"
-              style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23fbbf24' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-                backgroundRepeat: 'repeat'
-              }}
-            />
-          </div>
-          
-          {/* Floating Elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            {Array.from({ length: 15 }).map((_, i) => (
-              <div
-                key={i}
-                className="absolute bg-gradient-to-r from-yellow-400/10 to-yellow-500/20 rounded-full animate-pulse"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  width: `${Math.random() * 100 + 50}px`,
-                  height: `${Math.random() * 100 + 50}px`,
-                  animationDelay: `${Math.random() * 3}s`,
-                  animationDuration: `${Math.random() * 3 + 2}s`
-                }}
-              />
-            ))}
+        <section id="hero" className="relative min-h-screen flex items-center overflow-hidden pt-20">
+          {/* === BACKGROUND LAYERS === */}
+          <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #020b18 0%, #060f1e 40%, #0d1f3c 70%, #1B2A6B 100%)' }} />
+
+          {/* Diagonal orange accent bar */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute -right-40 top-0 h-full w-[55%]"
+              style={{ background: 'linear-gradient(160deg, transparent 30%, rgba(245,166,35,0.04) 60%, transparent 100%)' }} />
+            {/* Large orange circle glow — top right */}
+            <div className="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full"
+              style={{ background: 'radial-gradient(circle, rgba(245,166,35,0.12) 0%, transparent 65%)' }} />
+            {/* Subtle bottom-left glow */}
+            <div className="absolute -bottom-48 -left-24 w-[400px] h-[400px] rounded-full"
+              style={{ background: 'radial-gradient(circle, rgba(27,42,107,0.6) 0%, transparent 70%)' }} />
+            {/* Thin diagonal rule */}
+            <div className="absolute top-0 right-[42%] w-px h-full opacity-10"
+              style={{ background: 'linear-gradient(to bottom, transparent, #F5A623, transparent)' }} />
           </div>
 
-          <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
-            <div className="animate-fade-in-up">
-              <h1 className="text-6xl md:text-8xl font-black mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent">
-                  Transform
-                </span>
-                <br />
-                <span className="bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent drop-shadow-2xl">
-                  Your Space
-                </span>
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-                Premium property maintenance services that elevate your lifestyle. 
-                From stunning renovations to meticulous maintenance - we create spaces that inspire.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                {/* Start Your Project Button - Updated to link to quote section */}
-                <button
-                  onClick={() => scrollToSection('contact')}
-                  className="group bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-10 py-4 rounded-full text-lg font-bold hover:shadow-2xl hover:shadow-yellow-400/25 hover:scale-105 transition-all duration-300 relative overflow-hidden"
-                >
-                  <span className="relative z-10 flex items-center">
-                    Start Your Project
-                    <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
+          {/* Dot-grid texture */}
+          <div className="absolute inset-0 opacity-[0.035]"
+            style={{
+              backgroundImage: `radial-gradient(circle, #F5A623 1px, transparent 1px)`,
+              backgroundSize: '36px 36px'
+            }} />
+
+          {/* === CONTENT: TWO-COLUMN SPLIT === */}
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-16 lg:py-24 flex items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 w-full items-center">
+
+              {/* LEFT — Headline + CTA */}
+              <div className="order-2 lg:order-1">
+                {/* Eyebrow */}
+                <div className="inline-flex items-center gap-2.5 bg-orange-400/10 border border-orange-400/25 rounded-full px-5 py-2 mb-8">
+                  <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
+                  <span className="text-orange-400 text-xs font-bold tracking-[0.18em] uppercase">Sale, Victoria — Est. 2019</span>
+                </div>
+
+                {/* Main headline */}
+                <h1 className="font-black leading-[0.95] tracking-tighter mb-6">
+                  <span className="block text-white text-6xl md:text-7xl lg:text-8xl">Zentra</span>
+                  <span className="block text-6xl md:text-7xl lg:text-8xl"
+                    style={{ WebkitTextStroke: '2px #F5A623', color: 'transparent' }}>
+                    M &amp; CO
                   </span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </button>
+                  <span className="block text-2xl md:text-3xl font-semibold text-gray-300 mt-4 tracking-normal leading-snug">
+                    Property Renovation &amp;<br />Maintenance Specialists
+                  </span>
+                </h1>
 
-                {/* View Our Work Button - Updated to link to gallery section */}
-                <button
-                  onClick={() => {
-                    const gallerySection = document.getElementById('gallery');
-                    if (gallerySection) {
-                      gallerySection.scrollIntoView({ behavior: 'smooth' });
-                      setIsMobileMenuOpen(false);
-                    }
-                  }}
-                  className="group flex items-center text-white hover:text-yellow-400 transition-colors duration-300"
-                >
-                  <div className="bg-yellow-400/10 backdrop-blur-sm p-3 rounded-full mr-3 group-hover:bg-yellow-400/20 border border-yellow-400/30 transition-colors duration-300">
-                    <Play size={20} className="text-yellow-400" />
-                  </div>
-                  <span className="text-lg font-medium">View Our Work</span>
-                </button>
+                {/* Divider */}
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="h-px flex-1 max-w-[60px] bg-orange-400/50" />
+                  <p className="text-xs text-gray-500 tracking-[0.2em] uppercase">Residential · Commercial · Industrial</p>
+                </div>
+
+                <p className="text-gray-400 text-lg leading-relaxed mb-10 max-w-lg">
+                  From precision cleaning and pressure washing to full-scale renovations — we deliver results that speak for themselves across Sale and regional Victoria.
+                </p>
+
+                {/* CTA Row */}
+                <div className="flex flex-wrap gap-4 items-center">
+                  <button
+                    onClick={() => scrollToSection('contact')}
+                    className="group relative overflow-hidden bg-orange-400 text-black px-8 py-4 rounded-xl text-base font-bold hover:shadow-2xl hover:shadow-orange-400/30 hover:scale-105 transition-all duration-300"
+                  >
+                    <span className="relative z-10 flex items-center gap-2">
+                      Get a Free Quote
+                      <ArrowRight className="group-hover:translate-x-1 transition-transform duration-300" size={18} />
+                    </span>
+                    <div className="absolute inset-0 bg-orange-300 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </button>
+
+                  <button
+                    onClick={() => document.getElementById('gallery')?.scrollIntoView({ behavior: 'smooth' })}
+                    className="group flex items-center gap-3 text-gray-300 hover:text-white transition-colors duration-300"
+                  >
+                    <div className="w-12 h-12 rounded-xl border border-orange-400/30 bg-orange-400/5 flex items-center justify-center group-hover:bg-orange-400/15 group-hover:border-orange-400/50 transition-all duration-300">
+                      <Play size={18} className="text-orange-400 ml-0.5" />
+                    </div>
+                    <span className="font-medium">View Our Work</span>
+                  </button>
+                </div>
+
+                {/* Trust strip */}
+                <div className="flex flex-wrap gap-6 mt-10 pt-10 border-t border-white/5">
+                  {[
+                    { icon: Shield, label: 'Fully Insured' },
+                    { icon: Star, label: '5-Star Rated' },
+                    { icon: Award, label: 'Licensed & Certified' },
+                  ].map(({ icon: Icon, label }) => (
+                    <div key={label} className="flex items-center gap-2 text-sm text-gray-400">
+                      <Icon size={15} className="text-orange-400" />
+                      <span>{label}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
+
+              {/* RIGHT — Visual card stack */}
+              <div className="order-1 lg:order-2 flex justify-center lg:justify-end pr-0 lg:pr-4">
+                <div className="relative w-full max-w-xs">
+
+                  {/* Main brand card */}
+                  <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60"
+                    style={{ background: 'linear-gradient(145deg, #0d1f3c, #1B2A6B)' }}>
+                    {/* Orange top bar */}
+                    <div className="h-1.5 w-full bg-gradient-to-r from-orange-500 via-orange-400 to-orange-300" />
+                    <div className="p-8">
+                      <img
+                        src="/images/logonew.jpeg"
+                        alt="Zentra M & CO"
+                        className="w-28 h-28 rounded-2xl object-contain mx-auto mb-6 shadow-xl shadow-black/40"
+                      />
+                      <h2 className="text-center text-white font-black text-2xl mb-1">Zentra M &amp; CO</h2>
+                      <p className="text-center text-orange-400/80 text-sm font-medium mb-6">Property Renovation &amp; Maintenance</p>
+
+                      {/* Divider */}
+                      <div className="border-t border-white/10 mb-4" />
+
+                      {/* Available Now strip */}
+                      <div className="flex items-center gap-3 bg-white/5 rounded-2xl px-4 py-3 border border-white/10">
+                        <span className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse flex-shrink-0" />
+                        <div>
+                          <p className="text-white text-xs font-bold leading-tight">Available Now</p>
+                          <p className="text-gray-400 text-xs">Free quotes · No obligation</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Floating badge — Victoria wide */}
+                  <div className="absolute -top-4 right-4 bg-orange-400 rounded-2xl px-4 py-3 shadow-xl shadow-orange-400/30">
+                    <p className="text-black text-xs font-black leading-tight">Victoria</p>
+                    <p className="text-black/70 text-xs">Wide Service</p>
+                  </div>
+
+                  {/* Decorative dots */}
+                  <div className="absolute -bottom-10 -right-10 w-28 h-28 opacity-20"
+                    style={{
+                      backgroundImage: `radial-gradient(circle, #F5A623 1.5px, transparent 1.5px)`,
+                      backgroundSize: '10px 10px'
+                    }} />
+                </div>
+              </div>
+
             </div>
           </div>
 
           {/* Scroll Indicator */}
           <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <ChevronDown className="text-yellow-400" size={32} />
+            <ChevronDown className="text-orange-400/60" size={28} />
           </div>
+
+          {/* Bottom fade */}
+          <div className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none"
+            style={{ background: 'linear-gradient(to bottom, transparent, #060f1e)' }} />
         </section>
 
         {/* Services Section */}
-        <section id="services" className="py-20 bg-gray-900 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900"></div>
+        <section id="services" className="py-20 bg-navy-900 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-navy-900 via-navy-950 to-navy-900"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 bg-orange-400/10 border border-orange-400/25 rounded-full px-5 py-2 mb-5">
+                <span className="text-orange-400 text-xs font-bold tracking-[0.18em] uppercase">What We Do</span>
+              </div>
               <h2 className="text-5xl md:text-6xl font-black mb-6">
-                <span className="bg-gradient-to-r from-white to-yellow-400 bg-clip-text text-transparent">
-                  Premium Services
-                </span>
+                <span className="text-white">Our </span>
+                <span className="bg-gradient-to-r from-orange-400 to-orange-300 bg-clip-text text-transparent">Services</span>
               </h2>
               <p className="text-xl text-gray-300 max-w-3xl mx-auto">
                 Comprehensive property solutions delivered with exceptional craftsmanship and attention to detail.
@@ -464,7 +539,7 @@ function App() {
                     variants={fadeInUp}
                     className="group relative"
                   >
-                    <div className="relative bg-black p-8 rounded-3xl shadow-2xl border border-yellow-400/20 hover:border-yellow-400/50 transition-all duration-300 group-hover:scale-105 group-hover:shadow-yellow-400/10 overflow-hidden h-full">
+                    <div className="relative bg-navy-900 p-8 rounded-3xl shadow-2xl border border-orange-400/20 hover:border-orange-400/50 transition-all duration-300 group-hover:scale-105 group-hover:shadow-orange-400/10 overflow-hidden h-full">
                       {/* Background Image Layer - Increased opacity */}
                       <div 
                         className="absolute inset-0 bg-cover bg-center opacity-40 group-hover:opacity-50 transition-opacity duration-300"
@@ -475,15 +550,15 @@ function App() {
                         }}
                       />
                       
-                      {/* Dark Gradient Overlay - Reduced opacity */}
-                      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/40" />
+                      {/* Dark Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-b from-navy-900/60 via-navy-900/30 to-navy-900/70" />
                       
                       {/* Content */}
                       <div className="relative z-20">
-                        <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300 shadow-lg shadow-yellow-400/25">
+                        <div className="bg-gradient-to-br from-orange-400 to-orange-500 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300 shadow-lg shadow-orange-400/25">
                           <Icon className="text-black" size={24} />
                         </div>
-                        <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-yellow-400 transition-colors duration-300">
+                        <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-orange-400 transition-colors duration-300">
                           {service}
                         </h3>
                         <p className="text-gray-100 leading-relaxed mb-6 text-shadow">
@@ -494,14 +569,10 @@ function App() {
                           {service.includes('Flooring') && 'Premium flooring installation and restoration using the finest materials and expert craftsmanship.'}
                           {service.includes('Web') && 'Professional web design and digital solutions to establish your strong online presence and grow your business.'}
                         </p>
-                        <button className="text-yellow-400 font-semibold flex items-center group-hover:text-yellow-300 transition-colors duration-300">
-                          Learn More
-                          <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={16} />
-                        </button>
                       </div>
 
                       {/* Top Border Gradient */}
-                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 z-20" />
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-400 to-orange-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 z-20" />
                     </div>
                   </motion.div>
                 );
@@ -510,53 +581,13 @@ function App() {
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section className="py-20 bg-gray-900 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-gray-900 to-black"></div>
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-8"
-            >
-              {[
-                { number: '500+', label: 'Projects Completed', icon: Home },
-                { number: '98%', label: 'Client Satisfaction', icon: Star },
-                { number: '5+', label: 'Years Experience', icon: Award },
-                { number: '24/7', label: 'Support Available', icon: Shield }
-              ].map((stat, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  className="text-center group"
-                >
-                  <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-yellow-400/25">
-                    <stat.icon className="text-black" size={24} />
-                  </div>
-                  <motion.div
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="text-3xl md:text-4xl font-black text-yellow-400 mb-2"
-                  >
-                    {stat.number}
-                  </motion.div>
-                  <div className="text-gray-300 font-medium">{stat.label}</div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-
         {/* Our Gallery Section */}
-        <section id="gallery" className="py-20 bg-black text-white relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/50 to-black"></div>
+        <section id="gallery" className="py-20 bg-navy-950 text-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900/50 to-navy-950"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-5xl md:text-6xl font-black mb-6">
-                <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
                   Our Gallery
                 </span>
               </h2>
@@ -570,7 +601,7 @@ function App() {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1 }}
-              className="relative aspect-[16/9] rounded-3xl overflow-hidden shadow-2xl border border-yellow-400/20"
+              className="relative aspect-[16/9] rounded-3xl overflow-hidden shadow-2xl border border-orange-400/20"
             >
               {images.map((image, index) => (
                 <div
@@ -597,13 +628,13 @@ function App() {
               
               <button
                 onClick={prevSlide}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-black/50 hover:bg-yellow-400 text-white hover:text-black p-3 rounded-full transition-all duration-300"
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-black/50 hover:bg-orange-500 text-white hover:text-black p-3 rounded-full transition-all duration-300"
               >
                 <ChevronLeft size={24} />
               </button>
               <button
                 onClick={nextSlide}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-black/50 hover:bg-yellow-400 text-white hover:text-black p-3 rounded-full transition-all duration-300"
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-black/50 hover:bg-orange-500 text-white hover:text-black p-3 rounded-full transition-all duration-300"
               >
                 <ChevronRight size={24} />
               </button>
@@ -615,7 +646,7 @@ function App() {
                     onClick={() => setCurrentSlide(index)}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
                       currentSlide === index
-                        ? 'bg-yellow-400 w-8'
+                        ? 'bg-orange-500 w-8'
                         : 'bg-white/50 hover:bg-white'
                     }`}
                   />
@@ -626,12 +657,12 @@ function App() {
         </section>
 
         {/* Process Section */}
-        <section className="py-20 bg-black text-white relative overflow-hidden border-t border-yellow-400/20">
-          <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/50 to-black"></div>
+        <section className="py-20 bg-navy-950 text-white relative overflow-hidden border-t border-orange-400/20">
+          <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900/50 to-navy-950"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-5xl md:text-6xl font-black mb-6">
-                <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
                   Our Process
                 </span>
               </h2>
@@ -648,11 +679,11 @@ function App() {
                 { icon: Sparkles, title: 'Completion', desc: 'Final walkthrough and handover of your transformed space' }
               ].map((step, index) => (
                 <div key={index} className="relative group">
-                  <div className="bg-gradient-to-br from-gray-900 to-black p-8 rounded-3xl border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 group-hover:scale-105 shadow-xl">
-                    <div className="bg-gradient-to-br from-yellow-400 to-yellow-500 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300 shadow-lg shadow-yellow-400/25">
+                  <div className="bg-gradient-to-br from-navy-900 to-navy-950 p-8 rounded-3xl border border-orange-400/20 hover:border-orange-400/40 transition-all duration-300 group-hover:scale-105 shadow-xl">
+                    <div className="bg-gradient-to-br from-orange-400 to-orange-500 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:rotate-12 transition-transform duration-300 shadow-lg shadow-orange-400/25">
                       <step.icon className="text-black" size={24} />
                     </div>
-                    <div className="absolute top-4 right-4 text-6xl font-black text-gray-800 group-hover:text-yellow-400/30 transition-colors duration-300">
+                    <div className="absolute top-4 right-4 text-6xl font-black text-gray-800 group-hover:text-orange-400/30 transition-colors duration-300">
                       {String(index + 1).padStart(2, '0')}
                     </div>
                     <h3 className="text-2xl font-bold mb-4 text-white">{step.title}</h3>
@@ -665,34 +696,34 @@ function App() {
         </section>
 
         {/* Testimonials Section */}
-        <section className="py-20 bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 text-black relative overflow-hidden">
-          <div className="absolute inset-0 bg-black/10"></div>
+        <section className="py-20 relative overflow-hidden border-t border-orange-400/20" style={{ background: 'linear-gradient(135deg, #0a1628 0%, #1B2A6B 50%, #0a1628 100%)' }}>
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 50% 0%, rgba(245,166,35,0.08) 0%, transparent 60%)' }}></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
-              <h2 className="text-5xl md:text-6xl font-black mb-6 text-black">
+              <h2 className="text-5xl md:text-6xl font-black mb-6 text-white">
                 Client Stories
               </h2>
-              <p className="text-xl text-black/80 max-w-3xl mx-auto">
-                Don't just take our word for it - hear from our satisfied clients who've experienced our premium service.
+              <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+                Don't just take our word for it — hear from clients who've experienced our service first-hand.
               </p>
             </div>
             
             <div className="relative max-w-4xl mx-auto">
-              <div className="bg-black/90 backdrop-blur-lg rounded-3xl p-8 md:p-12 border border-yellow-400/50 shadow-2xl">
+              <div className="bg-navy-900/80 backdrop-blur-lg rounded-3xl p-8 md:p-12 border border-orange-400/30 shadow-2xl">
                 <div className="text-center">
                   <div className="flex justify-center mb-6">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="text-yellow-400 fill-current" size={24} />
+                      <Star key={i} className="text-orange-400 fill-current" size={24} />
                     ))}
                   </div>
-                  <Quote className="text-yellow-400/60 mx-auto mb-6" size={48} />
-                  <p className="text-2xl md:text-3xl font-light mb-8 leading-relaxed text-white">
+                  <Quote className="text-orange-400/50 mx-auto mb-6" size={48} />
+                  <p className="text-xl md:text-2xl font-light mb-8 leading-relaxed text-gray-100">
                     "{testimonials[activeTestimonial].text}"
                   </p>
                   <div className="flex items-center justify-center">
                     <div>
-                      <h4 className="text-xl font-bold text-yellow-400">{testimonials[activeTestimonial].name}</h4>
-                      <p className="text-gray-300">{testimonials[activeTestimonial].role}</p>
+                      <h4 className="text-xl font-bold text-orange-400">{testimonials[activeTestimonial].name}</h4>
+                      <p className="text-gray-400">{testimonials[activeTestimonial].role}</p>
                     </div>
                   </div>
                 </div>
@@ -704,8 +735,8 @@ function App() {
                   <button
                     key={index}
                     onClick={() => setActiveTestimonial(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === activeTestimonial ? 'bg-black scale-125' : 'bg-black/40 hover:bg-black/60'
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      index === activeTestimonial ? 'bg-orange-400 w-8' : 'bg-white/30 w-2 hover:bg-white/60'
                     }`}
                   />
                 ))}
@@ -715,18 +746,18 @@ function App() {
         </section>
 
         {/* About Section */}
-        <section id="about" className="py-20 bg-black text-white relative overflow-hidden border-t border-yellow-400/20">
-          <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/30 to-black"></div>
+        <section id="about" className="py-20 bg-navy-950 text-white relative overflow-hidden border-t border-orange-400/20">
+          <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900/30 to-navy-950"></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
                 <h2 className="text-3xl md:text-5xl font-black mb-8">
-                  <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
                     About Zentra M & CO
                   </span>
                 </h2>
                 <p className="text-xl text-gray-300 mb-8 leading-relaxed">
-                  We're not just contractors - we're space transformation specialists. With over 5 of experience, 
+                  We're not just contractors - we're space transformation specialists. With over 5 years of experience, 
                   we've mastered the art of turning ordinary properties into extraordinary spaces that reflect your vision and exceed your expectations.
                 </p>
                 <div className="space-y-6">
@@ -738,11 +769,11 @@ function App() {
                     <div key={index} className="space-y-2">
                       <div className="flex justify-between items-center">
                         <span className="font-semibold text-white">{stat.label}</span>
-                        <span className="text-yellow-400 font-bold">{stat.value}</span>
+                        <span className="text-orange-400 font-bold">{stat.value}</span>
                       </div>
-                      <div className="w-full bg-gray-800 rounded-full h-3 overflow-hidden">
+                      <div className="w-full bg-navy-800 rounded-full h-3 overflow-hidden">
                         <div 
-                          className="h-full bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full transition-all duration-1000 ease-out shadow-lg shadow-yellow-400/25"
+                          className="h-full bg-gradient-to-r from-orange-400 to-orange-500 rounded-full transition-all duration-1000 ease-out shadow-lg shadow-orange-400/25"
                           style={{ width: stat.value }}
                         ></div>
                       </div>
@@ -758,8 +789,8 @@ function App() {
                   { icon: Users, title: 'Expert Team', desc: 'Skilled professionals with years of experience' },
                   { icon: Award, title: 'Quality Guaranteed', desc: 'Premium results backed by our guarantee' }
                 ].map((feature, index) => (
-                  <div key={index} className="bg-gray-900 p-6 rounded-2xl border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 group hover:scale-105 shadow-xl">
-                    <feature.icon className="text-yellow-400 mb-4 group-hover:text-yellow-300 transition-colors duration-300" size={32} />
+                  <div key={index} className="bg-navy-800 p-6 rounded-2xl border border-orange-400/20 hover:border-orange-400/40 transition-all duration-300 group hover:scale-105 shadow-xl">
+                    <feature.icon className="text-orange-400 mb-4 group-hover:text-orange-300 transition-colors duration-300" size={32} />
                     <h3 className="font-bold text-white mb-2">{feature.title}</h3>
                     <p className="text-gray-300 text-sm">{feature.desc}</p>
                   </div>
@@ -770,12 +801,12 @@ function App() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-20 bg-black text-white relative overflow-hidden border-t border-yellow-400/20">
-          <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/30 to-black"></div>
+        <section className="py-20 bg-navy-950 text-white relative overflow-hidden border-t border-orange-400/20">
+          <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900/30 to-navy-950"></div>
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-5xl md:text-6xl font-black mb-6">
-                <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
                   Frequently Asked
                 </span>
               </h2>
@@ -786,14 +817,14 @@ function App() {
             
             <div className="space-y-4">
               {faqs.map((faq, index) => (
-                <div key={index} className="bg-gray-900 rounded-2xl border border-yellow-400/20 hover:border-yellow-400/40 transition-all duration-300 overflow-hidden">
+                <div key={index} className="bg-navy-800 rounded-2xl border border-orange-400/20 hover:border-orange-400/40 transition-all duration-300 overflow-hidden">
                   <button
                     onClick={() => toggleFaq(index)}
-                    className="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-800/50 transition-colors duration-300"
+                    className="w-full px-8 py-6 text-left flex justify-between items-center hover:bg-navy-800/50 transition-colors duration-300"
                   >
                     <span className="text-lg font-semibold text-white">{faq.question}</span>
                     <ChevronDown 
-                      className={`text-yellow-400 transition-transform duration-300 ${
+                      className={`text-orange-400 transition-transform duration-300 ${
                         openFaq === index ? 'rotate-180' : ''
                       }`} 
                       size={24} 
@@ -811,53 +842,53 @@ function App() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-20 bg-gradient-to-br from-yellow-400 via-yellow-500 to-yellow-600 text-black relative overflow-hidden">
-          <div className="absolute inset-0 bg-black/5"></div>
+        <section id="contact" className="py-20 relative overflow-hidden border-t border-orange-400/20" style={{ background: 'linear-gradient(135deg, #060f1e 0%, #0d1f3c 100%)' }}>
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at 30% 60%, rgba(245,166,35,0.07) 0%, transparent 55%)' }}></div>
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
-                <h2 className="text-5xl md:text-6xl font-black mb-8 text-black">
+                <h2 className="text-5xl md:text-6xl font-black mb-8 text-white">
                   Get In Touch
                 </h2>
-                <p className="text-xl text-black/80 mb-8 leading-relaxed">
-                  Ready to transform your space? Contact us today for a free consultation and discover how we can bring your vision to life.
+                <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                  Ready to start your next project? Contact us for a free consultation and we'll bring your vision to life.
                 </p>
                 
                 <div className="space-y-6">
                   <div className="flex items-center">
-                    <div className="bg-black/10 p-4 rounded-2xl mr-4">
-                      <Phone className="text-black" size={24} />
+                    <div className="bg-orange-400/10 border border-orange-400/20 p-4 rounded-2xl mr-4">
+                      <Phone className="text-orange-400" size={24} />
                     </div>
                     <div>
-                      <h3 className="font-bold text-black">Call Us</h3>
-                      <p className="text-black/80">+61 414 463 184</p>
+                      <h3 className="font-bold text-white">Call Us</h3>
+                      <a href="tel:+61414463184" className="text-gray-300 hover:text-orange-400 transition-colors duration-300">+61 414 463 184</a>
                     </div>
                   </div>
                   
                   <div className="flex items-center">
-                    <div className="bg-black/10 p-4 rounded-2xl mr-4">
-                      <Mail className="text-black" size={24} />
+                    <div className="bg-orange-400/10 border border-orange-400/20 p-4 rounded-2xl mr-4">
+                      <Mail className="text-orange-400" size={24} />
                     </div>
                     <div>
-                      <h3 className="font-bold text-black">Email Us</h3>
-                      <p className="text-black/80">Info@zentram.com.au</p>
+                      <h3 className="font-bold text-white">Email Us</h3>
+                      <a href="mailto:Info@zentram.com.au" className="text-gray-300 hover:text-orange-400 transition-colors duration-300">Info@zentram.com.au</a>
                     </div>
                   </div>
                   
                   <div className="flex items-center">
-                    <div className="bg-black/10 p-4 rounded-2xl mr-4">
-                      <MessageSquare className="text-black" size={24} />
+                    <div className="bg-orange-400/10 border border-orange-400/20 p-4 rounded-2xl mr-4">
+                      <MessageSquare className="text-orange-400" size={24} />
                     </div>
                     <div>
-                      <h3 className="font-bold text-black">Live Chat</h3>
-                      <p className="text-black/80">Available 24/7 for support</p>
+                      <h3 className="font-bold text-white">Live Chat</h3>
+                      <p className="text-gray-300">Available 24/7 for support</p>
                     </div>
                   </div>
                 </div>
               </div>
               
-              <div className="bg-black/90 backdrop-blur-lg p-8 rounded-3xl border border-yellow-400/50 shadow-2xl">
-                <h3 className="text-2xl font-bold text-yellow-400 mb-6">Request a Quote</h3>
+              <div className="bg-navy-900/60 backdrop-blur-lg p-8 rounded-3xl border border-orange-400/30 shadow-2xl">
+                <h3 className="text-2xl font-bold text-orange-400 mb-6">Request a Quote</h3>
                 
                 {showSuccessMessage && (
                   <div className="bg-green-500/20 border border-green-500/50 text-green-400 p-4 rounded-lg mb-6 flex items-center">
@@ -876,7 +907,7 @@ function App() {
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-yellow-400 focus:outline-none transition-colors duration-300"
+                        className="w-full px-4 py-3 bg-navy-900 border border-navy-700 rounded-lg text-white focus:border-orange-400 focus:outline-none transition-colors duration-300"
                         placeholder="Your full name"
                       />
                     </div>
@@ -889,7 +920,7 @@ function App() {
                         value={formData.telephone}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-yellow-400 focus:outline-none transition-colors duration-300"
+                        className="w-full px-4 py-3 bg-navy-900 border border-navy-700 rounded-lg text-white focus:border-orange-400 focus:outline-none transition-colors duration-300"
                         placeholder="Your phone number"
                       />
                     </div>
@@ -903,7 +934,7 @@ function App() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-yellow-400 focus:outline-none transition-colors duration-300"
+                      className="w-full px-4 py-3 bg-navy-900 border border-navy-700 rounded-lg text-white focus:border-orange-400 focus:outline-none transition-colors duration-300"
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -914,7 +945,7 @@ function App() {
                       name="propertyType"
                       value={formData.propertyType}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-yellow-400 focus:outline-none transition-colors duration-300"
+                      className="w-full px-4 py-3 bg-navy-900 border border-navy-700 rounded-lg text-white focus:border-orange-400 focus:outline-none transition-colors duration-300"
                     >
                       <option value="">Select property type</option>
                       <option value="residential">Residential</option>
@@ -930,7 +961,7 @@ function App() {
                       name="propertyAddress"
                       value={formData.propertyAddress}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-yellow-400 focus:outline-none transition-colors duration-300"
+                      className="w-full px-4 py-3 bg-navy-900 border border-navy-700 rounded-lg text-white focus:border-orange-400 focus:outline-none transition-colors duration-300"
                       placeholder="Property address (optional)"
                     />
                   </div>
@@ -950,8 +981,8 @@ function App() {
                           />
                           <div className={`w-5 h-5 rounded border-2 mr-3 flex items-center justify-center transition-colors duration-300 ${
                             formData.servicesRequired.includes(service)
-                              ? 'bg-yellow-400 border-yellow-400'
-                              : 'border-gray-600 hover:border-yellow-400'
+                              ? 'bg-orange-500 border-orange-400'
+                              : 'border-gray-600 hover:border-orange-400'
                           }`}>
                             {formData.servicesRequired.includes(service) && (
                               <CheckCircle className="text-black" size={12} />
@@ -970,17 +1001,17 @@ function App() {
                       value={formData.message}
                       onChange={handleChange}
                       rows="4"
-                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:border-yellow-400 focus:outline-none transition-colors duration-300 resize-none"
+                      className="w-full px-4 py-3 bg-navy-900 border border-navy-700 rounded-lg text-white focus:border-orange-400 focus:outline-none transition-colors duration-300 resize-none"
                       placeholder="Tell us about your project, timeline, and any specific requirements..."
                     ></textarea>
                   </div>
                   
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-black py-4 px-8 rounded-lg font-bold hover:shadow-2xl hover:shadow-yellow-400/25 hover:scale-105 transition-all duration-300 relative overflow-hidden group"
+                    className="w-full bg-gradient-to-r from-orange-400 to-orange-500 text-black py-4 px-8 rounded-lg font-bold hover:shadow-2xl hover:shadow-orange-400/25 hover:scale-105 transition-all duration-300 relative overflow-hidden group"
                   >
                     <span className="relative z-10">Send Request</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-orange-300 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </button>
                 </form>
               </div>
@@ -989,8 +1020,8 @@ function App() {
         </section>
 
         {/* WhatsApp Contact Section */}
-        <section className="py-20 bg-black text-white relative overflow-hidden border-t border-yellow-400/20">
-          <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900/30 to-black"></div>
+        <section className="py-20 bg-navy-950 text-white relative overflow-hidden border-t border-orange-400/20">
+          <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900/30 to-navy-950"></div>
           <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div className="flex flex-col items-center space-y-8">
               <motion.div
@@ -1002,16 +1033,15 @@ function App() {
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                className="bg-gradient-to-br from-yellow-400 to-yellow-500 w-20 h-20 rounded-2xl flex items-center justify-center shadow-lg shadow-yellow-400/25"
+                className="bg-gradient-to-br from-orange-400 to-orange-500 w-20 h-20 rounded-2xl flex items-center justify-center shadow-lg shadow-orange-400/25"
               >
-                <img 
-                  src="https://img.icons8.com/color/96/000000/whatsapp--v1.png"
-                  alt="WhatsApp"
-                  className="w-14 h-14 hover:scale-110 transition-transform duration-300"
-                />
+                {/* WhatsApp inline SVG */}
+                <svg className="w-11 h-11" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
               </motion.div>
               <h2 className="text-4xl md:text-5xl font-black">
-                <span className="bg-gradient-to-r from-yellow-400 to-yellow-500 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
                   Let's Chat on WhatsApp
                 </span>
               </h2>
@@ -1022,29 +1052,32 @@ function App() {
                 href="https://wa.me/+61414463184?text=Hello!%20I'm%20interested%20in%20your%20services."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-10 py-4 rounded-full text-lg font-bold hover:shadow-2xl hover:shadow-yellow-400/25 hover:scale-105 transition-all duration-300 inline-flex items-center space-x-3 relative overflow-hidden"
+                className="group bg-gradient-to-r from-orange-400 to-orange-500 text-black px-10 py-4 rounded-full text-lg font-bold hover:shadow-2xl hover:shadow-orange-400/25 hover:scale-105 transition-all duration-300 inline-flex items-center space-x-3 relative overflow-hidden"
               >
                 <span className="relative z-10 flex items-center">
                   Start Chat Now
                   <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={20} />
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-300 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </a>
             </div>
           </div>
         </section>
 
         {/* Footer */}
-        <footer className="bg-gray-900 text-white py-16 border-t border-yellow-400/20">
+        <footer className="bg-navy-900 text-white py-16 border-t border-orange-400/20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div className="md:col-span-2">
                 <div className="flex items-center mb-6">
-                  <span className="text-3xl font-black bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-500 bg-clip-text text-transparent mr-4">
-                   Zentra M & CO
-                  </span>
-                  <div className="h-8 w-px bg-yellow-400/50"></div>
-                  <span className="ml-4 text-gray-300">Property Solutions</span>
+                  <img
+                    src="/images/logonew.jpeg"
+                    alt="Zentra M & CO"
+                    className="h-14 w-auto object-contain mr-4 rounded-lg"
+                  />
+                  <div>
+                    <p className="text-sm text-gray-400 leading-tight">Property Renovation<br />&amp; Maintenance</p>
+                  </div>
                 </div>
                 <p className="text-gray-300 mb-6 max-w-md">
                   Transforming properties with premium craftsmanship and exceptional service. 
@@ -1054,7 +1087,7 @@ function App() {
                   {['facebook', 'twitter', 'instagram', 'linkedin'].map((social) => (
                     <button
                       key={social}
-                      className="bg-gray-800 hover:bg-yellow-400 hover:text-black p-3 rounded-full transition-all duration-300 group"
+                      className="bg-navy-800 hover:bg-orange-500 hover:text-black p-3 rounded-full transition-all duration-300 group"
                     >
                       <MessageSquare size={20} />
                     </button>
@@ -1063,12 +1096,12 @@ function App() {
               </div>
               
               <div>
-                <h3 className="text-lg font-bold mb-4 text-yellow-400">Services</h3>
+                <h3 className="text-lg font-bold mb-4 text-orange-400">Services</h3>
                 <ul className="space-y-2">
                   {services.slice(0, 4).map((service) => (
                     <li key={service}>
                       <button
-                        className="text-gray-300 hover:text-yellow-400 transition-colors duration-300"
+                        className="text-gray-300 hover:text-orange-400 transition-colors duration-300"
                         onClick={() => scrollToSection('services')}
                       >
                         {service}
@@ -1079,19 +1112,19 @@ function App() {
               </div>
               
               <div>
-                <h3 className="text-lg font-bold mb-4 text-yellow-400">Contact Info</h3>
+                <h3 className="text-lg font-bold mb-4 text-orange-400">Contact Info</h3>
                 <div className="space-y-3">
                   <div className="flex items-center text-gray-300">
-                    <Phone size={16} className="mr-3 text-yellow-400" />
+                    <Phone size={16} className="mr-3 text-orange-400" />
                     <span>+61 414 463 184</span>
                   </div>
                   <div className="flex items-center text-gray-300">
-                    <Mail size={16} className="mr-3 text-yellow-400" />
+                    <Mail size={16} className="mr-3 text-orange-400" />
                     <span>Info@zentram.com.au</span>
                   </div>
                   <div className="flex items-center text-gray-300">
-                    <Building size={16} className="mr-3 text-yellow-400" />
-                    <span>Unit 2,9-13 elgin street sale , 3850</span>
+                    <Building size={16} className="mr-3 text-orange-400" />
+                    <span>Unit 2, 9-13 Elgin Street, Sale VIC 3850</span>
                   </div>
                 </div>
               </div>
@@ -1099,74 +1132,14 @@ function App() {
             
             <div className="border-t border-gray-800 mt-12 pt-8 text-center">
               <p className="text-gray-400">
-                © 2024 Apex Property Solutions. All rights reserved. | 
-                <button className="hover:text-yellow-400 transition-colors duration-300 ml-1">Privacy Policy</button> | 
-                <button className="hover:text-yellow-400 transition-colors duration-300 ml-1">Terms of Service</button>
+                © 2025 Zentra M &amp; CO. All rights reserved. |
+                <button className="hover:text-orange-400 transition-colors duration-300 ml-1">Privacy Policy</button> | 
+                <button className="hover:text-orange-400 transition-colors duration-300 ml-1">Terms of Service</button>
               </p>
             </div>
           </div>
         </footer>
         </main>
-
-        {/* Mobile Menu Panel */}
-<div 
-  className={`md:hidden fixed inset-0 z-40 transform transition-all duration-300 ease-in-out ${
-    isMobileMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0'
-  }`}
->
-  {/* Backdrop */}
-  <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" onClick={() => setIsMobileMenuOpen(false)} />
-  
-  {/* Menu Panel */}
-  <div className="absolute right-0 top-0 w-64 h-full bg-gray-900 shadow-2xl">
-    <div className="flex flex-col h-full">
-      {/* Logo Section */}
-      <div className="flex items-center justify-between p-4 border-b border-yellow-400/20">
-        <span className="text-xl font-bold text-yellow-400">Menu</span>
-        <button 
-          onClick={() => setIsMobileMenuOpen(false)}
-          className="p-2 rounded-full hover:bg-yellow-400/10 text-gray-400 hover:text-yellow-400"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      </div>
-
-      {/* Navigation Links */}
-      <div className="flex-1 px-2 py-4 space-y-1 overflow-y-auto">
-        {['Home', 'About', 'Services', 'Projects', 'Contact'].map((item) => (
-          <button
-            key={item}
-            onClick={() => {
-              scrollToSection(item.toLowerCase() === 'home' ? 'hero' : 
-                            item.toLowerCase() === 'projects' ? 'gallery' : 
-                            item.toLowerCase());
-              setIsMobileMenuOpen(false);
-            }}
-            className="w-full px-4 py-3 text-left text-gray-300 hover:text-yellow-400 hover:bg-yellow-400/10 rounded-lg transition-all duration-300 flex items-center space-x-2"
-          >
-            <span>{item}</span>
-          </button>
-        ))}
-      </div>
-
-      {/* Call to Action Button */}
-      <div className="p-4 border-t border-yellow-400/20">
-        <button
-          onClick={() => {
-            scrollToSection('contact'); // Changed from 'inquiry'
-            setIsMobileMenuOpen(false);
-          }}
-          className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-4 py-3 rounded-lg text-sm font-bold hover:shadow-lg hover:shadow-yellow-400/25 transition-all duration-300 flex items-center justify-center space-x-2"
-        >
-          <span>Get Quote</span>
-          <ArrowRight size={16} />
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
 
 {/* Mobile Menu Overlay */}
 <div 
@@ -1182,20 +1155,20 @@ function App() {
 
   {/* Menu Panel */}
   <div 
-    className={`absolute top-0 right-0 w-80 h-full bg-gradient-to-b from-gray-900 to-black border-l border-yellow-400/20 shadow-2xl transform ${
+    className={`absolute top-0 right-0 w-80 h-full bg-gradient-to-b from-gray-900 to-black border-l border-orange-400/20 shadow-2xl transform ${
       isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
     } transition-transform duration-500 ease-out`}
   >
     {/* Header */}
-    <div className="flex items-center justify-between p-6 border-b border-yellow-400/20">
+    <div className="flex items-center justify-between p-6 border-b border-orange-400/20">
       <img
-        src="images/logo2.png"
+        src="/images/logonew.jpeg"
         alt="Zentra M & CO"
-        className="h-8 w-auto"
+        className="h-10 w-auto object-contain"
       />
       <button 
         onClick={() => setIsMobileMenuOpen(false)}
-        className="p-2 rounded-full hover:bg-yellow-400/10 text-gray-400 hover:text-yellow-400 transition-colors duration-300"
+        className="p-2 rounded-full hover:bg-orange-400/10 text-gray-400 hover:text-orange-400 transition-colors duration-300"
       >
         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -1215,7 +1188,7 @@ function App() {
             setIsMobileMenuOpen(false);
           }}
           className={`w-full group px-4 py-4 text-left rounded-xl transition-all duration-300 
-            ${index === 0 ? 'bg-yellow-400/10 text-yellow-400' : 'text-gray-300 hover:bg-yellow-400/10'}
+            ${index === 0 ? 'bg-orange-400/10 text-orange-400' : 'text-gray-300 hover:bg-orange-400/10'}
             flex items-center justify-between`}
           style={{
             transitionDelay: `${index * 50}ms`
@@ -1223,11 +1196,11 @@ function App() {
         >
           <span className="font-medium">{item}</span>
           <div className={`w-6 h-6 rounded-full flex items-center justify-center
-            ${index === 0 ? 'bg-yellow-400/20' : 'bg-transparent group-hover:bg-yellow-400/20'}
+            ${index === 0 ? 'bg-orange-400/20' : 'bg-transparent group-hover:bg-orange-400/20'}
             transition-all duration-300`}
           >
             <ArrowRight size={14} className={`transform ${
-              index === 0 ? 'text-yellow-400' : 'text-gray-400 group-hover:text-yellow-400'
+              index === 0 ? 'text-orange-400' : 'text-gray-400 group-hover:text-orange-400'
             } group-hover:translate-x-0.5 transition-all duration-300`} />
           </div>
         </button>
@@ -1235,15 +1208,15 @@ function App() {
     </div>
 
     {/* Contact Section */}
-    <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-yellow-400/20 bg-gradient-to-t from-gray-900 to-transparent">
+    <div className="absolute bottom-0 left-0 right-0 p-6 border-t border-orange-400/20 bg-gradient-to-t from-gray-900 to-transparent">
       <div className="space-y-4">
         <button
           onClick={() => {
             scrollToSection('contact'); // Changed from 'inquiry'
             setIsMobileMenuOpen(false);
           }}
-          className="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-black px-6 py-4 rounded-xl 
-            font-bold hover:shadow-lg hover:shadow-yellow-400/25 hover:scale-[1.02] transform transition-all duration-300
+          className="w-full bg-gradient-to-r from-orange-400 to-orange-500 text-black px-6 py-4 rounded-xl 
+            font-bold hover:shadow-lg hover:shadow-orange-400/25 hover:scale-[1.02] transform transition-all duration-300
             flex items-center justify-center space-x-2"
         >
           <span>Get Quote</span>
@@ -1255,7 +1228,7 @@ function App() {
           <a
             href="tel:+61414463184"
             className="flex items-center justify-center space-x-2 px-4 py-3 rounded-xl
-              bg-yellow-400/10 text-yellow-400 hover:bg-yellow-400/20 transition-all duration-300"
+              bg-orange-400/10 text-orange-400 hover:bg-orange-400/20 transition-all duration-300"
           >
             <Phone size={16} />
             <span className="font-medium">Call Us</span>
@@ -1265,7 +1238,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center space-x-2 px-4 py-3 rounded-xl
-              bg-yellow-400/10 text-yellow-400 hover:bg-yellow-400/20 transition-all duration-300"
+              bg-orange-400/10 text-orange-400 hover:bg-orange-400/20 transition-all duration-300"
           >
             <MessageSquare size={16} />
             <span className="font-medium">WhatsApp</span>

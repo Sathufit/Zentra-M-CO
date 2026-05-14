@@ -2,15 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom gradient for gold */
-.bg-gold-gradient {
-  background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7);
-}
-
-.text-gold-gradient {
-  background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+:root {
+  --color-navy-950: #060f1e;
+  --color-navy-900: #0a1628;
+  --color-navy-800: #0d1f3c;
+  --color-navy-700: #1B2A6B;
+  --color-brand-orange: #F5A623;
 }
 
 @keyframes float {
@@ -18,7 +15,7 @@
   50% { transform: translateY(-20px); }
 }
 
-@keyframes pulse {
+@keyframes pulse-slow {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.5; }
 }
@@ -33,7 +30,7 @@
 }
 
 .animate-pulse-slow {
-  animation: pulse 3s ease-in-out infinite;
+  animation: pulse-slow 3s ease-in-out infinite;
 }
 
 .animate-slide-in {

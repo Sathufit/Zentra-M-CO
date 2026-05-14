@@ -13,26 +13,22 @@ export default {
       },
       keyframes: {
         fadeInUp: {
-          '0%': {
-            opacity: '0',
-            transform: 'translateY(10px)'
-          },
-          '100%': {
-            opacity: '1',
-            transform: 'translateY(0)'
-          },
+          '0%': { opacity: '0', transform: 'translateY(10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
         },
       },
       colors: {
-        gold: {
-          light: '#FCF6BA',
-          DEFAULT: '#BF953F',
-          dark: '#B38728',
-        }
-      },
-      backgroundColor: {
-        'rich-black': '#1A1A1A',
-        'off-black': '#222222',
+        navy: {
+          950: '#060f1e',
+          900: '#0a1628',
+          800: '#0d1f3c',
+          700: '#1B2A6B',
+          600: '#2d4a99',
+        },
+        brand: {
+          orange: '#F5A623',
+          'orange-dark': '#d4890e',
+        },
       },
     },
   },
