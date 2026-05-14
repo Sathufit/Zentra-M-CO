@@ -57,34 +57,7 @@ function App() {
     }
   ];
 
-  const faqs = [
-    {
-      question: 'What types of property maintenance services do you offer?',
-      answer: 'We provide comprehensive property maintenance including premium painting, luxury flooring, landscape design, pressure washing, interior renovations, and complete property transformations for both residential and commercial spaces.',
-    },
-    {
-      question: 'Do you offer services for both residential and commercial properties?',
-      answer: 'Absolutely! We specialize in both residential homes and commercial properties, tailoring our premium services to meet the unique requirements of each project type.',
-    },
-    {
-      question: 'How do I request a quote for my property?',
-      answer: 'Simply fill out our contact form, call us directly, or use our live chat. We provide detailed quotes within 24 hours and offer free consultations for larger projects.',
-    },
-    {
-      question: 'Are your services fully insured and guaranteed?',
-      answer: 'Yes, we are fully licensed and insured with comprehensive coverage. All our work comes with quality guarantees and warranty protection for your peace of mind.',
-    },
-    {
-      question: 'How long will my property project take to complete?',
-      answer: 'Project timelines vary based on scope and complexity. After our consultation, we provide detailed schedules with milestones and keep you updated throughout the entire process.',
-    },
-    {
-      question: 'Do you use eco-friendly and sustainable materials?',
-      answer: 'We prioritize environmental responsibility by using eco-friendly, sustainable materials and practices whenever possible, ensuring beautiful results with minimal environmental impact.',
-    },
-  ];
 
-  const [openFaq, setOpenFaq] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -104,9 +77,6 @@ function App() {
     return () => clearInterval(timer);
   }, []);
 
-  const toggleFaq = (index) => {
-    setOpenFaq(openFaq === index ? null : index);
-  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -756,46 +726,7 @@ function App() {
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="py-20 bg-navy-950 text-white relative overflow-hidden border-t border-orange-400/20">
-          <div className="absolute inset-0 bg-gradient-to-br from-navy-950 via-navy-900/30 to-navy-950"></div>
-          <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12 sm:mb-16">
-              <h2 className="text-3xl sm:text-4xl md:text-6xl font-black mb-6">
-                <span className="bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
-                  Frequently Asked
-                </span>
-              </h2>
-              <p className="text-xl text-gray-300">
-                Get answers to common questions about our premium property services.
-              </p>
-            </div>
-            
-            <div className="space-y-4">
-              {faqs.map((faq, index) => (
-                <div key={index} className="bg-navy-800 rounded-2xl border border-orange-400/20 hover:border-orange-400/40 transition-all duration-300 overflow-hidden">
-                  <button
-                    onClick={() => toggleFaq(index)}
-                    className="w-full px-5 sm:px-8 py-4 sm:py-6 text-left flex justify-between items-center gap-4 hover:bg-navy-800/50 transition-colors duration-300"
-                  >
-                    <span className="text-sm sm:text-base lg:text-lg font-semibold text-white">{faq.question}</span>
-                    <ChevronDown 
-                      className={`text-orange-400 transition-transform duration-300 ${
-                        openFaq === index ? 'rotate-180' : ''
-                      }`} 
-                      size={24} 
-                    />
-                  </button>
-                  <div className={`px-5 sm:px-8 transition-all duration-300 ${
-                    openFaq === index ? 'pb-6 opacity-100' : 'pb-0 opacity-0 max-h-0 overflow-hidden'
-                  }`}>
-                    <p className="text-gray-300 leading-relaxed">{faq.answer}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+
 
         {/* Contact Section */}
         <section id="contact" className="py-20 relative overflow-hidden border-t border-orange-400/20" style={{ background: 'linear-gradient(135deg, #060f1e 0%, #0d1f3c 100%)' }}>
