@@ -236,15 +236,16 @@ function App() {
   return (
     <div className="min-h-screen bg-navy-950 text-white font-sans overflow-x-hidden">
       {/* Navigation Bar */}
-      <nav className={`fixed w-full z-50 transition-all duration-500 ${scrollY > 50 ? 'bg-navy-900/95 backdrop-blur-lg shadow-2xl border-b border-orange-400/20' : 'bg-transparent'}`}>
+      <nav className={`fixed w-full z-50 transition-all duration-500 ${scrollY > 50 ? 'bg-white shadow-2xl border-b border-[color:var(--color-logo-gold)]' : 'bg-white/90'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20">
             <div className="flex items-center">              <div className="flex-shrink-0">
-                <div className="flex items-center gap-2 bg-navy-900/80 border border-orange-400/20 rounded-xl px-3 py-2">
+                <div className="flex items-center gap-2">
                   <img
                     src="/images/logonew.jpeg"
                     alt="Zentra M & CO Logo"
                     className="h-9 w-auto object-contain"
+                    style={{ background: 'white' }}
                   />
                 </div>
               </div>
@@ -256,18 +257,18 @@ function App() {
                   onClick={() => scrollToSection(item.toLowerCase() === 'home' ? 'hero' : 
                                                item.toLowerCase() === 'projects' ? 'gallery' : 
                                                item.toLowerCase())}
-                  className="relative text-gray-300 hover:text-orange-400 px-3 py-2 text-sm font-semibold transition-all duration-300 group"
+                  className="relative text-[color:var(--color-brand-blue)] hover:text-[color:var(--color-logo-gold)] px-3 py-2 text-sm font-semibold transition-all duration-300 group"
                 >
                   {item}
-                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-orange-400 to-orange-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-[color:var(--color-logo-gold)] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
                 </button>
               ))}
               <button
-                onClick={() => scrollToSection('contact')} // Changed from 'inquiry'
-                className="bg-gradient-to-r from-orange-400 to-orange-500 text-black px-6 py-3 rounded-full text-sm font-bold hover:shadow-2xl hover:shadow-orange-400/25 hover:scale-105 transition-all duration-300 relative overflow-hidden group"
+                onClick={() => scrollToSection('contact')}
+                className="bg-[color:var(--color-logo-gold)] text-white px-6 py-3 rounded-full text-sm font-bold hover:shadow-2xl hover:shadow-[color:var(--color-logo-gold)]/25 hover:scale-105 transition-all duration-300 relative overflow-hidden group"
               >
                 <span className="relative z-10">Get Quote</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-300 to-orange-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-[color:var(--color-logo-gold)] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
             </div>
             <div className="-mr-2 flex md:hidden">
@@ -294,20 +295,20 @@ function App() {
       </nav>
 
         {/* Mobile menu */}
-        <div className={`md:hidden transition-all duration-300 ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden bg-black/95 backdrop-blur-lg border-t border-orange-400/20`}>
+        <div className={`md:hidden transition-all duration-300 ${isMobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden bg-white/95 backdrop-blur-lg border-t border-[color:var(--color-logo-gold)]`}>
           <div className="px-4 pt-2 pb-4 space-y-2">
             {['Home', 'About', 'Services', 'Projects', 'Contact'].map((item) => (
               <button
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase() === 'home' ? 'hero' : item.toLowerCase())}
-                className="block w-full text-left px-3 py-2 text-base font-medium text-gray-300 hover:text-orange-400 transition-colors duration-300"
+                className="block w-full text-left px-3 py-2 text-base font-medium text-[color:var(--color-brand-blue)] hover:text-[color:var(--color-logo-gold)] transition-colors duration-300"
               >
                 {item}
               </button>
             ))}
             <button
-              onClick={() => scrollToSection('contact')} // Changed from 'inquiry'
-              className="block w-full text-left bg-gradient-to-r from-orange-400 to-orange-500 text-black px-3 py-2 rounded-lg text-base font-bold mt-4"
+              onClick={() => scrollToSection('contact')}
+              className="block w-full text-left bg-[color:var(--color-logo-gold)] text-white px-3 py-2 rounded-lg text-base font-bold mt-4"
             >
               Get Quote
             </button>
